@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Scarlette Sahori — Mis XV años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+/* Paleta Rapunzel: dorado, blanco, lila y orquídea */
+:root {
+  --gold: #ECD677;
+  --gold-deep: #B9992B;
+  --gold-text: #8A6E10;
+  --lilac: #E1C4FB;
+  --orchid: #CC93D5;
+  --plum: #5E3A7E;
+  --plum-deep: #3F2457;
+  --cream: #FAF5FE;
+  --cream-dark: #E9D9F6;
+  --ink: #2E2438;
+  --ink-soft: #685B76;
+  --green: #2f6b4f;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--plum);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex; justify-content: center;
+}
+h1,h2,h3 { font-family: 'Playfair Display', 'Cormorant Garamond', serif; margin: 0; font-weight: 600; }
+p { line-height: 1.65; margin: 0; }
+.script { font-family: 'Great Vibes', cursive; }
+
+.card { width: 100%; max-width: 500px; background: var(--cream); min-height: 100vh; position: relative; overflow: hidden; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* --- linternas flotantes --- */
+.lantern-layer { position: fixed; inset: 0; pointer-events: none; z-index: 3; overflow: hidden; }
+.lantern {
+  position: absolute; bottom: -40px; width: 15px; height: 19px;
+  background: linear-gradient(180deg, #FFF3B8, var(--gold));
+  border-radius: 4px; box-shadow: 0 0 10px 4px rgba(236,214,119,0.6);
+  animation: lantern-rise linear infinite;
+}
+.lantern::before {
+  content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 7px; background: rgba(185,153,43,0.6);
+}
+@keyframes lantern-rise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translateY(-55vh) translateX(var(--drift, 12px)); opacity: 0.95; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-115vh) translateX(calc(var(--drift, 12px) * 2)); opacity: 0; }
+}
+
+/* --- flores cayendo --- */
+.petal-layer { position: fixed; inset: 0; pointer-events: none; z-index: 3; overflow: hidden; }
+.petal {
+  position: absolute; top: -24px; font-size: 15px; line-height: 1;
+  animation: petal-fall linear infinite;
+  filter: drop-shadow(0 0 3px rgba(94,58,126,0.35));
+}
+@keyframes petal-fall {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.9; }
+  50% { transform: translateY(52vh) translateX(var(--pdrift, 24px)) rotate(160deg); }
+  92% { opacity: 0.85; }
+  100% { transform: translateY(112vh) translateX(calc(var(--pdrift, 24px) * 2)) rotate(340deg); opacity: 0; }
+}
+
+/* --- destellos dorados --- */
+.sparkle-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+.sparkle {
+  position: absolute; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 7px 2px rgba(236,214,119,0.85);
+  animation: sparkle-twinkle ease-in-out infinite;
+}
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* --- trenza dorada en los bordes --- */
+.card::before, .card::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 16px; z-index: 1; opacity: 0.6;
+  pointer-events: none;
+  background-repeat: repeat-y;
+  background-size: 16px 130px;
+}
+.card::before {
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='130'%3E%3Cpath d='M8 0 C1 16,15 32,8 48 C1 64,15 80,8 96 C1 108,15 120,8 130' stroke='%23ECD677' stroke-width='2.2' fill='none'/%3E%3Cpath d='M8 0 C15 16,1 32,8 48 C15 64,1 80,8 96 C15 108,1 120,8 130' stroke='%23B9992B' stroke-width='1.4' fill='none' opacity='0.7'/%3E%3Ccircle cx='8' cy='24' r='3' fill='%23CC93D5'/%3E%3Ccircle cx='8' cy='72' r='3' fill='%23E1C4FB'/%3E%3Ccircle cx='8' cy='118' r='2.4' fill='%23ECD677'/%3E%3C/svg%3E");
+}
+.card::after {
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='130'%3E%3Cpath d='M8 0 C15 16,1 32,8 48 C15 64,1 80,8 96 C15 108,1 120,8 130' stroke='%23ECD677' stroke-width='2.2' fill='none'/%3E%3Cpath d='M8 0 C1 16,15 32,8 48 C1 64,15 80,8 96 C1 108,15 120,8 130' stroke='%23B9992B' stroke-width='1.4' fill='none' opacity='0.7'/%3E%3Ccircle cx='8' cy='24' r='3' fill='%23E1C4FB'/%3E%3Ccircle cx='8' cy='72' r='3' fill='%23CC93D5'/%3E%3Ccircle cx='8' cy='118' r='2.4' fill='%23ECD677'/%3E%3C/svg%3E");
+}
+
+/* --- sol dorado --- */
+.sun-emblem { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 230px; height: 230px; z-index: 0; pointer-events: none; }
+.sun-emblem::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,214,119,0.38) 0%, rgba(236,214,119,0.12) 40%, transparent 70%);
+}
+.sun-emblem::after {
+  content: ''; position: absolute; inset: 0; margin: auto; width: 150px; height: 150px; border-radius: 50%;
+  background-image: repeating-conic-gradient(rgba(236,214,119,0.32) 0deg 4deg, transparent 4deg 20deg);
+  animation: sun-rotate 46s linear infinite;
+}
+@keyframes sun-rotate { to { transform: rotate(360deg); } }
+.hero-inner { position: relative; z-index: 1; }
+
+/* --- barra superior --- */
+.top-bar-fixed {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 500px; display: flex; justify-content: space-between;
+  padding: 0 16px; z-index: 40; pointer-events: none;
+}
+.float-btn {
+  pointer-events: auto; background: rgba(63,36,87,0.62); backdrop-filter: blur(6px);
+  color: var(--gold); border: 1px solid rgba(236,214,119,0.5); border-radius: 999px;
+  padding: 8px 14px; font-size: 0.8rem; font-family: 'EB Garamond', serif; cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+}
+
+a.float-btn { text-decoration: none; }
+.float-btn[hidden] { display: none; }
+.panel-fab { background: rgba(255,255,255,0.92); color: var(--plum-deep); border-color: var(--orchid); font-weight: 600; }
+.wall-fab { background: rgba(236,214,119,0.92); color: var(--plum-deep); border-color: var(--gold-deep); font-weight: 600; box-shadow: 0 0 14px rgba(236,214,119,0.7); }
+
+/* --- sello de apertura --- */
+.seal-overlay {
+  position: fixed; inset: 0; background: radial-gradient(ellipse at center, #8a5aa6, var(--plum-deep) 78%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 50; transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.seal-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.seal-overlay .script { color: var(--gold); font-size: 2rem; margin-bottom: 18px; position: relative; z-index: 1; text-align: center; padding: 0 16px; }
+.seal-overlay::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 360px; height: 360px; border-radius: 50%;
+  background-image: repeating-conic-gradient(rgba(236,214,119,0.2) 0deg 3deg, transparent 3deg 20deg);
+  animation: sun-rotate 55s linear infinite;
+}
+/* --- torre de Rapunzel (pantalla de entrada) --- */
+.seal-overlay { background: linear-gradient(to bottom, #150727, #3F2457 55%, #6b4a93); gap: 6px; padding: 14px 12px; }
+.seal-overlay::before { opacity: 0.55; }
+.escena { position: relative; z-index: 1; height: min(54vh, 470px); aspect-ratio: 320 / 580; }
+.torre-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+#cabello-dorado { stroke-dasharray: 1200; stroke-dashoffset: 1200; opacity: 0; transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s; }
+#cabello-dorado.cayendo { stroke-dashoffset: 0; opacity: 1; }
+.pelo-brillante { animation: brilloMagico 2s infinite alternate ease-in-out; }
+@keyframes brilloMagico {
+  0% { filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #ECD677); }
+  100% { filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px #ECD677); }
+}
+.flor-magica { transition: transform 0.5s ease, filter 0.5s ease; transform-box: fill-box; transform-origin: center; }
+.escena.magia-activa .flor-magica { filter: drop-shadow(0 0 4px #fff); transform: scale(1.35); }
+.star-dot { animation: sparkle-twinkle 2.4s ease-in-out infinite; }
+.enter-btn {
+  position: relative; z-index: 1; margin-top: 8px; padding: 14px 28px; font-family: inherit; font-size: 0.98rem; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--plum-deep); background: linear-gradient(135deg, #FFF3B8, var(--gold) 55%, #d9b94a); border: 2px solid #fff; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.4), 0 0 26px rgba(236,214,119,0.55); animation: seal-breathe 2.2s ease-in-out infinite; max-width: 92vw;
+}
+.enter-btn:disabled { animation: none; cursor: default; opacity: 0.92; }
+@keyframes seal-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+.ornament { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 4px 0; }
+.ornament .line { height: 1px; width: 46px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.ornament .line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+.ornament .flower { font-size: 0.9rem; color: var(--gold); line-height: 1; }
+
+.inv-hero {
+  padding: 80px 30px 50px; text-align: center; color: var(--white); position: relative;
+  background: linear-gradient(rgba(63,36,87,0.5), rgba(63,36,87,0.72)),
+              url('https://images.pexels.com/photos/31482000/pexels-photo-31482000.jpeg?auto=compress&cs=tinysrgb&w=1000') center 30%/cover;
+}
+.inv-hero .eyebrow { font-style: italic; letter-spacing: 0.26em; text-transform: uppercase; font-size: 0.72rem; color: rgba(255,255,255,0.88); }
+.inv-hero h1 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 3.4rem; margin: 14px 0 4px; line-height: 1.05; }
+.inv-hero .datebox { margin-top: 18px; display: inline-flex; gap: 10px; align-items: center; font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+
+.countdown { display: flex; justify-content: center; gap: 14px; margin-top: 26px; }
+.countdown .box { background: rgba(255,255,255,0.14); border: 1px solid rgba(236,214,119,0.5); border-radius: 12px; padding: 10px 4px; width: 62px; }
+.countdown .box strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+.countdown .box span { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+
+.inv-for { text-align: center; padding: 34px 30px 8px; font-size: 1.08rem; font-style: italic; color: var(--plum); }
+.inv-for b { font-style: normal; }
+
+.section-block { padding: 36px 30px; }
+.section-block .eyebrow { display: block; text-align: center; font-style: italic; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.72rem; color: var(--gold-text); margin-bottom: 10px; }
+.section-block h2 { text-align: center; font-size: 1.5rem; color: var(--plum); margin-bottom: 6px; }
+.story-text { text-align: center; color: var(--ink-soft); font-size: 0.98rem; max-width: 380px; margin: 14px auto 0; }
+
+/* frase de las linternas */
+.lantern-quote {
+  position: relative; margin: 26px auto 0; max-width: 390px; text-align: center;
+  padding: 22px 22px 20px; border-radius: 16px;
+  background: linear-gradient(160deg, rgba(225,196,251,0.55), rgba(236,214,119,0.25));
+  border: 1px solid rgba(204,147,213,0.55);
+}
+.lantern-quote::before {
+  content: '❝'; position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 34px; line-height: 34px; border-radius: 50%; background: var(--gold);
+  color: var(--plum-deep); font-size: 1.1rem;
+}
+.lantern-quote p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: var(--plum-deep); font-weight: 600; }
+
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; }
+.gallery img.tall { height: 100%; grid-row: span 2; }
+
+/* --- padres y madrinas --- */
+.family-card {
+  margin-top: 20px; background: var(--white); border: 1px solid var(--cream-dark);
+  border-radius: 16px; padding: 22px; text-align: center;
+}
+.family-card h3 { color: var(--plum); font-size: 1.05rem; margin-bottom: 10px; }
+.family-card .name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); line-height: 1.5; }
+
+.timeline { margin-top: 26px; display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: flex; gap: 18px; position: relative; padding-bottom: 30px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item .dotcol { display: flex; flex-direction: column; align-items: center; }
+.timeline-item .tdot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--orchid); }
+.timeline-item .tline { flex: 1; width: 1.5px; background: var(--cream-dark); margin-top: 4px; }
+.timeline-item:last-child .tline { display: none; }
+.timeline-item .ttime { font-family: 'Playfair Display', serif; color: var(--plum); font-size: 1.05rem; }
+.timeline-item .tlabel { font-size: 0.9rem; color: var(--ink-soft); margin-top: 2px; }
+
+.place-card {
+  margin-top: 20px; background: var(--white); border: 1px solid var(--cream-dark); border-radius: 16px;
+  padding: 22px; text-align: center;
+}
+.place-card .place-tag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 4px; }
+.place-card h3 { color: var(--plum); font-size: 1.15rem; margin-bottom: 4px; }
+.place-card p { color: var(--ink-soft); font-size: 0.9rem; }
+.place-card iframe { width: 100%; height: 170px; border: 0; border-radius: 12px; margin-top: 16px; }
+.place-card a.mapbtn {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 20px;
+  border-radius: 999px; border: 1.4px solid var(--orchid); color: var(--plum); text-decoration: none; font-size: 0.85rem;
+}
+
+/* --- vestimenta --- */
+.dress-card {
+  margin-top: 20px; text-align: center; background: var(--white); border: 1px solid var(--cream-dark);
+  border-radius: 16px; padding: 24px 20px;
+}
+.dress-card h3 { color: var(--plum); font-size: 1.15rem; margin-bottom: 6px; }
+.dress-card .dress-sub { font-size: 0.92rem; color: var(--ink-soft); max-width: 340px; margin: 0 auto; }
+.palette { display: flex; justify-content: center; gap: 16px; margin-top: 18px; flex-wrap: wrap; }
+.palette .sw-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.palette .sw { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--cream-dark), 0 3px 10px rgba(63,36,87,0.18); position: relative; }
+.palette .sw::after { content: '✕'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: rgba(63,36,87,0.55); }
+.palette .sw-name { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.dress-note { margin-top: 14px; font-size: 0.82rem; font-style: italic; color: var(--gold-text); }
+
+.gift-card { margin-top: 20px; text-align: center; background: var(--white); border: 1px solid var(--cream-dark); border-radius: 16px; padding: 22px; }
+.gift-card p { font-size: 0.92rem; color: var(--ink-soft); }
+
+/* --- Liverpool --- */
+.liverpool {
+  margin: 18px auto 0; max-width: 300px; padding: 16px 14px; border-radius: 14px;
+  background: linear-gradient(160deg, #fff, var(--cream)); border: 1.5px solid var(--orchid);
+}
+.lv-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; letter-spacing: 0.08em; color: #E10098; }
+.lv-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-top: 2px; }
+.lv-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; letter-spacing: 0.1em; color: var(--plum-deep); margin: 6px 0 8px; user-select: all; }
+.lv-copy { border: 1.4px solid var(--orchid); background: transparent; color: var(--plum); border-radius: 999px; padding: 7px 16px; font-family: inherit; font-size: 0.85rem; cursor: pointer; }
+.lv-copy:hover { background: var(--lilac); }
+
+/* --- cofre de los deseos --- */
+.chest-stage { position: relative; margin: 70px auto 0; width: 260px; height: 230px; }
+.chest-rays {
+  position: absolute; left: 50%; top: 48%; width: 340px; height: 340px; transform: translate(-50%, -50%);
+  border-radius: 50%; opacity: 0; transition: opacity 0.8s ease; pointer-events: none;
+  background-image: repeating-conic-gradient(rgba(236,214,119,0.38) 0deg 5deg, transparent 5deg 18deg);
+  -webkit-mask-image: radial-gradient(circle, #000 20%, transparent 68%); mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  animation: sun-rotate 30s linear infinite;
+}
+.chest-stage.open .chest-rays { opacity: 1; }
+.chest-fx { position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: visible; }
+
+.chest {
+  position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%);
+  width: 170px; height: 120px; padding: 0; border: none; background: none; cursor: pointer; perspective: 600px;
+  -webkit-tap-highlight-color: transparent;
+}
+.chest:focus-visible { outline: 3px solid var(--orchid); outline-offset: 8px; border-radius: 12px; }
+.chest.bounce { animation: chest-bounce 0.5s ease; }
+@keyframes chest-bounce { 0%,100% { transform: translateX(-50%) scale(1); } 40% { transform: translateX(-50%) scale(1.06, 0.94); } 70% { transform: translateX(-50%) scale(0.97, 1.04); } }
+.chest-body {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 74px; border-radius: 6px 6px 14px 14px;
+  background: linear-gradient(180deg, #7d4a99, var(--plum-deep)); border: 3px solid var(--gold-deep);
+  box-shadow: 0 10px 18px rgba(63,36,87,0.35), inset 0 2px 0 rgba(255,255,255,0.18);
+}
+.chest-body .band { position: absolute; top: 0; bottom: 0; width: 14px; background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-deep)); }
+.chest-body .b1 { left: 22px; } .chest-body .b2 { right: 22px; }
+.chest-body .lock {
+  position: absolute; left: 50%; top: -10px; transform: translateX(-50%); width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+  background: radial-gradient(circle at 35% 30%, #FFF3B8, var(--gold) 60%, var(--gold-deep)); border: 2px solid var(--gold-deep);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.chest.open .lock { transform: translateX(-50%) translateY(22px) scale(0.6); opacity: 0; }
+.chest-lid {
+  position: absolute; left: -4px; right: -4px; bottom: 70px; height: 46px; border-radius: 40px 40px 6px 6px / 30px 30px 6px 6px;
+  background: linear-gradient(180deg, #9a66b8, var(--plum)); border: 3px solid var(--gold-deep);
+  transform-origin: 50% 100%; transform: rotateX(0deg); transition: transform 0.9s cubic-bezier(.34,1.4,.5,1);
+  z-index: 3; box-shadow: inset 0 3px 0 rgba(255,255,255,0.22);
+}
+.chest-lid .band { position: absolute; left: 50%; top: 0; bottom: 0; width: 18px; transform: translateX(-50%); background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-deep)); }
+.chest-lid .gem { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); font-size: 1.1rem; filter: drop-shadow(0 0 4px rgba(236,214,119,0.9)); }
+.chest.open .chest-lid { transform: rotateX(-115deg); }
+.chest-inside {
+  position: absolute; left: 6px; right: 6px; bottom: 62px; height: 22px; border-radius: 8px 8px 0 0; z-index: 2; overflow: hidden;
+  background: radial-gradient(ellipse at 50% 120%, #FFF3B8, var(--gold) 55%, #a8832b);
+  opacity: 0; transition: opacity 0.4s ease 0.15s;
+}
+.chest.open .chest-inside { opacity: 1; }
+.chest-inside .slot-env { position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%) rotate(-8deg); font-size: 1.3rem; }
+.chest-glow {
+  position: absolute; left: 50%; bottom: 70px; width: 150px; height: 90px; transform: translateX(-50%); border-radius: 50%; z-index: 1;
+  background: radial-gradient(ellipse, rgba(255,243,184,0.95), rgba(236,214,119,0) 70%); opacity: 0; transition: opacity 0.6s ease; filter: blur(4px);
+}
+.chest.open .chest-glow { opacity: 1; animation: glow-pulse 2s ease-in-out infinite 0.8s; }
+@keyframes glow-pulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.25); } }
+.chest-hint { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); animation: hint-blink 2s ease-in-out infinite; }
+.chest-stage.open .chest-hint { animation: none; color: var(--plum); }
+@keyframes hint-blink { 50% { opacity: 0.45; } }
+.chest-note { margin-top: 10px; font-size: 0.86rem !important; font-style: italic; }
+
+/* partículas del cofre */
+.fx { position: absolute; left: 50%; bottom: 96px; line-height: 1; pointer-events: none; will-change: transform, opacity; }
+.fx.env { animation: env-rain 1.9s cubic-bezier(.3,.6,.4,1) forwards; }
+.fx.star { animation: star-burst 1.3s ease-out forwards; }
+@keyframes env-rain {
+  0%   { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 0; }
+  12%  { opacity: 1; }
+  45%  { transform: translate(var(--x), var(--up)) scale(1.1) rotate(var(--r)); opacity: 1; }
+  100% { transform: translate(calc(var(--x) * 0.25), 6px) scale(0.5) rotate(calc(var(--r) * 2)); opacity: 0; }
+}
+@keyframes star-burst {
+  0%   { transform: translate(0, 0) scale(0.3); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(var(--x), var(--up)) scale(1.1); opacity: 0; }
+}
+
+
+.inv-rsvp { background: linear-gradient(165deg, #7d4a99, var(--plum)); color: var(--white); padding: 40px 30px; text-align: center; position: relative; overflow: hidden; }
+.inv-rsvp > *:not(.sparkle-layer) { position: relative; z-index: 1; }
+.inv-rsvp .eyebrow { color: var(--gold); display: block; font-style: italic; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.72rem; }
+.inv-rsvp h2 { color: var(--white); font-size: 1.5rem; margin-top: 8px; }
+.inv-rsvp p.sub { color: rgba(255,255,255,0.85); font-size: 0.92rem; margin-top: 8px; }
+.rsvp-form { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.rsvp-form select {
+  padding: 10px 14px; border-radius: 9px; border: 1px solid rgba(236,214,119,0.6); background: rgba(255,255,255,0.12);
+  color: var(--white); font-size: 0.95rem; width: 230px; font-family: inherit;
+}
+.rsvp-form select option { color: var(--ink); }
+.rsvp-btns { display: flex; gap: 12px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+.rsvp-btn {
+  padding: 13px 22px; border-radius: 999px; border: 1.4px solid var(--gold); background: transparent;
+  font-size: 0.95rem; color: var(--gold); cursor: pointer; font-family: inherit;
+}
+.rsvp-btn:disabled { opacity: 0.6; cursor: wait; }
+.rsvp-btn.chosen-yes { background: var(--green); border-color: var(--green); color: var(--white); }
+.rsvp-btn.chosen-no { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.45); color: var(--white); }
+.rsvp-msg { margin-top: 16px; font-size: 0.95rem; color: var(--gold); min-height: 1.4em; }
+
+.inv-pass-wrap { padding: 40px 30px 30px; text-align: center; }
+.table-card {
+  margin-top: 20px; background: linear-gradient(160deg, var(--plum), var(--plum-deep)); color: var(--cream); border-radius: 16px;
+  padding: 26px; text-align: center; border: 1px solid rgba(236,214,119,0.45);
+}
+.table-card .tbl-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
+.table-card .tbl-number { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin: 8px 0 4px; color: var(--gold); }
+.table-card p { font-size: 0.86rem; color: rgba(255,255,255,0.82); }
+.inv-pass {
+  background: linear-gradient(160deg, var(--plum), var(--plum-deep)); border-radius: 20px; padding: 30px; color: var(--cream);
+  border: 1px solid rgba(236,214,119,0.45);
+}
+.inv-pass .pass-label { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.85; margin-bottom: 16px; }
+.inv-pass-qr { background: var(--white); border-radius: 12px; padding: 14px; display: inline-block; }
+.inv-pass .pass-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-top: 16px; }
+.inv-pass .pass-count { font-size: 0.86rem; color: var(--gold); margin-top: 4px; }
+.inv-pass .pass-hint { font-size: 0.76rem; color: rgba(255,255,255,0.7); margin-top: 10px; }
+
+/* --- muro de recuerdos --- */
+.wall-block { background: var(--white); text-align: center; }
+.wall-card {
+  margin-top: 18px; border-radius: 16px; padding: 24px 22px;
+  background: linear-gradient(160deg, rgba(225,196,251,0.55), rgba(236,214,119,0.3));
+  border: 1px solid rgba(204,147,213,0.55);
+}
+.wall-card .big { font-size: 2.2rem; }
+.wall-card .wall-h { font-size: 1.15rem; color: var(--plum); margin-top: 4px; }
+.inv-pass-wrap .wall-card { margin-top: 0; }
+.wall-card p { font-size: 0.95rem; color: var(--ink); margin-top: 6px; }
+.btn-post {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 13px 24px; border-radius: 999px;
+  border: none; background: var(--plum); color: var(--white); font-size: 0.95rem; cursor: pointer; font-family: inherit; text-decoration: none;
+}
+.btn-post.gold { background: var(--gold); color: var(--plum-deep); font-weight: 600; }
+
+.thankyou-card {
+  background: linear-gradient(135deg, var(--plum), #8a5aa6); color: var(--cream); border-radius: 16px;
+  padding: 28px; text-align: center; margin-top: 18px;
+}
+.thankyou-card .script { font-size: 1.9rem; color: var(--gold); }
+.thankyou-card p { font-size: 0.92rem; margin-top: 10px; color: rgba(255,255,255,0.9); }
+
+.inv-footer { text-align: center; padding: 20px 24px 44px; font-size: 0.8rem; color: var(--ink-soft); }
+.inv-footer a { color: var(--plum); text-decoration: none; border-bottom: 1px solid var(--gold-deep); }
+
+.notfound { padding: 120px 30px; text-align: center; color: var(--plum); }
+.notfound h2 { font-size: 1.4rem; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop preload="none"></audio>
+
+<div class="top-bar-fixed">
+  <button class="float-btn" id="music-toggle" onclick="toggleMusic()">🔇 <span data-i18n="music_off">Música</span></button>
+  <a class="float-btn panel-fab" id="panel-fab" href="#" target="_blank" rel="noopener" hidden>⚙️ <span>Panel</span></a>
+  <a class="float-btn wall-fab" id="wall-fab" href="#" hidden>📸 <span data-i18n="wall_fab">Muro de fotos</span></a>
+  <button class="float-btn" id="lang-toggle" onclick="toggleLang()">🌐 EN</button>
+</div>
+<script>
+/* Hadas de colores que vuelan por la página (paleta Rapunzel).
+   Se usa en la invitación y en el muro. */
+(function () {
+  // alas (SVG en línea, sin depender de sitios externos)
+  const wingL = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 114'%3E%3Cpath d='M62 55C58 18 28 2 6 8c-8 20 16 42 56 47z' fill='%23ffffff' fill-opacity='.62' stroke='%23ffffff' stroke-opacity='.9' stroke-width='1.2'/%3E%3Cpath d='M62 60C40 64 14 78 20 100c16 12 38-10 42-40z' fill='%23ffffff' fill-opacity='.5' stroke='%23ffffff' stroke-opacity='.85' stroke-width='1.2'/%3E%3C/svg%3E\")";
+  const wingR = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 114'%3E%3Cpath d='M2 55C6 18 36 2 58 8c8 20-16 42-56 47z' fill='%23ffffff' fill-opacity='.62' stroke='%23ffffff' stroke-opacity='.9' stroke-width='1.2'/%3E%3Cpath d='M2 60c22 4 48 18 42 40C28 112 6 90 2 60z' fill='%23ffffff' fill-opacity='.5' stroke='%23ffffff' stroke-opacity='.85' stroke-width='1.2'/%3E%3C/svg%3E\")";
+
+  const css = `
+.fairy-layer { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.fairy-wrap { position: absolute; width: 0; height: 0; animation: fairy-roam var(--roam, 26s) ease-in-out var(--delay, 0s) infinite alternate; }
+.fairy-s { position: absolute; left: 0; top: 0; width: 0; height: 0; transform: scale(var(--s, .4)); }
+.fairy {
+  width: 300px; height: 300px; top: 0; left: 0; margin: -150px 0 0 -150px; position: absolute; perspective: 250px;
+  animation: fairy-flying var(--fly, 12s) linear infinite;
+}
+.fairy .glow {
+  width: 56px; height: 56px; top: 50%; left: 50%; margin: -28px 0 0 -28px; position: absolute; transform-style: preserve-3d; border-radius: 100px;
+  background: radial-gradient(ellipse at center, var(--c1) 0%, var(--c1) 30%, var(--c2) 52%, var(--c3) 100%);
+}
+.fairy .glow::after {
+  content: ""; width: 54px; height: 54px; top: 50%; left: 50%; margin: -27px 0 0 -27px; position: absolute; border-radius: 100px;
+  box-shadow: 0 0 22px 7px rgba(var(--g), 1), 0 0 34px 22px rgba(var(--g2), .8);
+  animation: fairy-pulse 1.5s ease-in-out infinite alternate;
+}
+.fairy .sparkle { height: 3px; width: 3px; background: var(--c3); position: absolute; border-radius: 100px; opacity: 0; z-index: 100; box-shadow: 0 0 6px 2px rgba(var(--g), .8); }
+.fairy .sparkle:nth-child(1) { top: -20px; left: 15px; animation: fairy-sparkling .8s ease-in-out .2s infinite; }
+.fairy .sparkle:nth-child(2) { top: 3px; left: 60px; animation: fairy-sparkling .8s ease-in-out .4s infinite; }
+.fairy .sparkle:nth-child(3) { top: 60px; left: 50px; animation: fairy-sparkling .8s ease-in-out .6s infinite; }
+.fairy .sparkle:nth-child(4) { top: 68px; left: 16px; animation: fairy-sparkling .8s ease-in-out .8s infinite; }
+.fairy .sparkle:nth-child(5) { top: 50px; left: 0; animation: fairy-sparkling .8s ease-in-out 1s infinite; }
+.fairy .wings { position: relative; top: 50%; left: 50%; width: 144px; height: 114px; margin: -87px 0 0 -72px; }
+.fairy .wings::before, .fairy .wings::after {
+  content: ""; width: 64px; height: 114px; top: 50%; left: 50%; margin: -57px 0 0 -72px; position: absolute;
+  transform-origin: right; animation: fairy-flap-left .2s ease-in-out infinite;
+  background: ${wingL} no-repeat; background-size: 100% 100%;
+  filter: drop-shadow(0 0 3px rgba(var(--g2), 1)) drop-shadow(0 0 7px rgba(var(--g), 1));
+}
+.fairy .wings::after {
+  left: auto; right: 50%; margin: -57px -72px 0 0; transform-origin: left; animation: fairy-flap-right .2s ease-in-out infinite;
+  background: ${wingR} no-repeat; background-size: 100% 100%;
+}
+@keyframes fairy-pulse {
+  0%, 100% { box-shadow: 0 0 20px 5px rgba(var(--g), .9), 0 0 30px 20px rgba(var(--g2), .7); }
+  50% { box-shadow: 0 0 30px 7px rgba(var(--g), .9), 0 0 35px 22px rgba(var(--g2), .7); }
+}
+@keyframes fairy-sparkling {
+  0%, 100% { transform: scale3d(0, 0, 1); opacity: 0; }
+  25%, 75% { opacity: 1; }
+  50% { transform: scale3d(1, 1, 1); opacity: 0; }
+}
+@keyframes fairy-flap-left { 0%, 100% { transform: rotateX(-15deg) rotateY(-45deg); } 50% { transform: rotateX(-10deg) rotateY(-20deg); } }
+@keyframes fairy-flap-right { 0%, 100% { transform: rotateX(-15deg) rotateY(45deg); } 50% { transform: rotateX(-10deg) rotateY(20deg); } }
+@keyframes fairy-flying {
+  0%   { transform: rotate(var(--a0, 50deg)) translateX(0px) rotate(calc(var(--a0, 50deg) * -1)) scale(.85); }
+  50%  { transform: rotate(180deg) translateX(80px) rotate(-180deg) scale(1); }
+  100% { transform: rotate(360deg) translateX(0px) rotate(-360deg) scale(.85); }
+}
+@keyframes fairy-roam {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(var(--dx1), var(--dy1)); }
+  66%  { transform: translate(var(--dx2), var(--dy2)); }
+  100% { transform: translate(var(--dx3), var(--dy3)); }
+}`;
+
+  // colores de la paleta: dorado, blanco, lila, orquídea
+  const palette = [
+    { c1: '#FFFBE0', c2: '#F7EAA8', c3: '#ECD677', g: '236,214,119', g2: '214,180,60' },   // dorado
+    { c1: '#FFFFFF', c2: '#F6F0FB', c3: '#E9DFF3', g: '255,250,235', g2: '210,185,235' },  // blanco
+    { c1: '#FFFFFF', c2: '#EAD6FC', c3: '#E1C4FB', g: '225,196,251', g2: '190,150,235' }, // lila
+    { c1: '#FFF3FF', c2: '#E3B6EA', c3: '#CC93D5', g: '204,147,213', g2: '170,100,190' }, // orquídea
+  ];
+
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function build() {
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+
+    const layer = document.createElement('div');
+    layer.className = 'fairy-layer';
+    layer.setAttribute('aria-hidden', 'true');
+
+    const small = window.innerWidth < 600;
+    const count = small ? 6 : 8;
+    for (let i = 0; i < count; i++) {
+      const p = palette[i % palette.length];
+      const wrap = document.createElement('div');
+      wrap.className = 'fairy-wrap';
+      const s = small ? rnd(0.25, 0.38) : rnd(0.28, 0.45);
+      const vars = {
+        '--c1': p.c1, '--c2': p.c2, '--c3': p.c3, '--g': p.g, '--g2': p.g2,
+        '--s': s.toFixed(2),
+        '--roam': rnd(22, 40).toFixed(1) + 's',
+        '--delay': (-rnd(0, 20)).toFixed(1) + 's',
+        '--fly': rnd(9, 15).toFixed(1) + 's',
+        '--a0': Math.round(rnd(0, 360)) + 'deg',
+        '--dx1': Math.round(rnd(-45, 45)) + 'vw', '--dy1': Math.round(rnd(-40, 40)) + 'vh',
+        '--dx2': Math.round(rnd(-45, 45)) + 'vw', '--dy2': Math.round(rnd(-40, 40)) + 'vh',
+        '--dx3': Math.round(rnd(-45, 45)) + 'vw', '--dy3': Math.round(rnd(-40, 40)) + 'vh',
+      };
+      Object.keys(vars).forEach(k => wrap.style.setProperty(k, vars[k]));
+      wrap.style.left = rnd(15, 85).toFixed(0) + '%';
+      wrap.style.top = rnd(15, 85).toFixed(0) + '%';
+      wrap.innerHTML = '<div class="fairy-s"><div class="fairy"><div class="wings"></div><div class="glow">' +
+        '<div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>' +
+        '</div></div></div>';
+      layer.appendChild(wrap);
+    }
+    document.body.appendChild(layer);
+  }
+
+  if (document.body) build(); else document.addEventListener('DOMContentLoaded', build);
+})();
+
+</script>
+
+<div class="lantern-layer" id="lantern-layer"></div>
+<div class="petal-layer" id="petal-layer"></div>
+
+<div class="seal-overlay" id="seal-overlay">
+  <div class="script">Scarlette Sahori</div>
+  <div class="escena" id="escena-torre">
+    <svg class="torre-svg" viewBox="0 0 320 580" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="gradienteCabelloReal" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#FFF3B8" />
+          <stop offset="40%" stop-color="#ECD677" />
+          <stop offset="80%" stop-color="#D4AF37" />
+          <stop offset="100%" stop-color="#ECD677" />
+        </linearGradient>
+      </defs>
+      <!-- estrellas -->
+      <circle class="star-dot" cx="40" cy="40" r="1.6" fill="#fff"/><circle class="star-dot" style="animation-delay:.6s" cx="270" cy="70" r="1.8" fill="#ECD677"/>
+      <circle class="star-dot" style="animation-delay:1.2s" cx="60" cy="150" r="1.4" fill="#E1C4FB"/><circle class="star-dot" style="animation-delay:.3s" cx="285" cy="190" r="1.6" fill="#fff"/>
+      <circle class="star-dot" style="animation-delay:1.8s" cx="25" cy="260" r="1.5" fill="#ECD677"/><circle class="star-dot" style="animation-delay:.9s" cx="300" cy="320" r="1.4" fill="#E1C4FB"/>
+      <!-- colina -->
+      <path d="M10 540 Q160 480 310 540 L310 580 L10 580 Z" fill="#4f7d3a"/>
+      <path d="M30 548 Q160 500 290 548 L290 580 L30 580 Z" fill="#659a4a"/>
+      <!-- torre -->
+      <path d="M135 180 L185 180 L175 520 L145 520 Z" fill="#8a8fb0"/>
+      <rect x="145" y="220" width="14" height="9" rx="2" fill="#4d4a6b" opacity="0.4"/>
+      <rect x="162" y="270" width="16" height="10" rx="2" fill="#4d4a6b" opacity="0.4"/>
+      <rect x="140" y="330" width="15" height="9" rx="2" fill="#4d4a6b" opacity="0.4"/>
+      <rect x="158" y="390" width="18" height="11" rx="2" fill="#4d4a6b" opacity="0.4"/>
+      <rect x="144" y="450" width="14" height="9" rx="2" fill="#4d4a6b" opacity="0.4"/>
+      <!-- hiedras -->
+      <path d="M165 180 Q195 280 168 380 T192 520" stroke="#2e7d32" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M142 210 Q128 310 152 410 T138 510" stroke="#1b5e20" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <!-- balcón -->
+      <path d="M115 180 C115 145 205 145 205 180 Z" fill="#5b3a4e"/>
+      <rect x="125" y="175" width="70" height="8" rx="2" fill="#3e2723"/>
+      <!-- casita -->
+      <rect x="125" y="105" width="70" height="60" fill="#fff3c4" stroke="#c9b5d6" stroke-width="2"/>
+      <path d="M140 165 L140 130 C140 112 180 112 180 130 L180 165 Z" fill="#3e2723"/>
+      <path d="M145 165 L145 134 C145 122 175 122 175 134 L175 165 Z" fill="#110800"/>
+      <!-- tejado -->
+      <path d="M105 110 L160 5 L215 110 Q160 128 105 110 Z" fill="#CC93D5"/>
+      <path d="M132 70 Q160 82 188 70" stroke="#7b3f9a" stroke-width="2.5" fill="none"/>
+      <path d="M118 95 Q160 110 202 95" stroke="#7b3f9a" stroke-width="2.5" fill="none"/>
+      <path d="M125 80 L142 22 L160 65 Z" fill="#9a5cb4"/>
+      <!-- flores (colores de la paleta) -->
+      <circle class="flor-magica" cx="215" cy="550" r="5" fill="#CC93D5"/><circle class="flor-magica" cx="227" cy="544" r="4" fill="#ECD677"/>
+      <circle class="flor-magica" cx="90" cy="542" r="5" fill="#ffffff"/><circle class="flor-magica" cx="106" cy="556" r="4" fill="#E1C4FB"/>
+      <circle class="flor-magica" cx="182" cy="245" r="4" fill="#CC93D5"/><circle class="flor-magica" cx="138" cy="285" r="4" fill="#ECD677"/>
+      <circle class="flor-magica" cx="178" cy="335" r="4" fill="#ffffff"/><circle class="flor-magica" cx="148" cy="405" r="4" fill="#E1C4FB"/>
+      <circle class="flor-magica" cx="184" cy="455" r="4" fill="#ECD677"/><circle class="flor-magica" cx="162" cy="485" r="4" fill="#ffffff"/>
+      <circle class="flor-magica" cx="128" cy="145" r="5" fill="#ECD677"/><circle class="flor-magica" cx="198" cy="132" r="4" fill="#CC93D5"/>
+      <!-- Pascal -->
+      <g transform="translate(15, 545)">
+        <ellipse cx="15" cy="15" rx="10" ry="7" fill="#4caf50"/>
+        <path d="M 7 17 Q 2 20 0 14 Q -1 10 4 10" stroke="#4caf50" stroke-width="3" fill="none"/>
+        <circle cx="20" cy="11" r="6" fill="#4caf50"/><circle cx="21" cy="10" r="3" fill="#ffffff"/><circle cx="21" cy="10" r="1.5" fill="#212121"/>
+        <path d="M 11 21 L 9 25 M 17 21 L 18 25" stroke="#388e3c" stroke-width="2"/>
+      </g>
+      <!-- cabello mágico -->
+      <path id="cabello-dorado" class="pelo-brillante"
+            d="M 160 148 C 160 190, 125 210, 135 260 C 145 310, 195 340, 175 420 C 160 480, 120 500, 140 540 C 150 560, 42 562, 18 572"
+            stroke="url(#gradienteCabelloReal)" stroke-width="16" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <button class="enter-btn" id="enter-btn" type="button" onclick="openInvitation()" data-i18n="enter_btn">Presiona para entrar a la invitación</button>
+</div>
+
+<div class="card" id="card">
+
+  <div class="inv-hero">
+    <div class="sun-emblem" aria-hidden="true"></div>
+    <div class="sparkle-layer" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <span class="eyebrow" data-i18n="hero_eyebrow">Mis XV años</span>
+      <h1>Scarlette<br>Sahori</h1>
+      <div class="ornament"><span class="line"></span><span class="flower">❁</span><span class="line r"></span></div>
+      <div class="datebox" data-i18n="hero_date">12 · Diciembre · 2026</div>
+      <div class="countdown" id="countdown">
+        <div class="box"><strong id="cd-days">--</strong><span data-i18n="cd_days">Días</span></div>
+        <div class="box"><strong id="cd-hours">--</strong><span data-i18n="cd_hours">Hrs</span></div>
+        <div class="box"><strong id="cd-min">--</strong><span data-i18n="cd_min">Min</span></div>
+        <div class="box"><strong id="cd-sec">--</strong><span data-i18n="cd_sec">Seg</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-for reveal"><span data-i18n="greeting">Con todo mi cariño para</span> <b id="guest-greeting" data-i18n="greeting_name">ti</b></div>
+
+  <div class="section-block reveal">
+    <span class="eyebrow" data-i18n="story_eyebrow">Mi cuento</span>
+    <h2 data-i18n="story_title">Un sueño hecho realidad</h2>
+    <p class="story-text" data-i18n="story_text">Como en los cuentos, hoy la niña se convierte en princesa. Quiero celebrar esta noche mágica rodeada de las personas que más quiero — y tú eres una de ellas.</p>
+    <div class="lantern-quote">
+      <p data-i18n="quote">Cuando mires las luces brillar, sabrás que mi sueño se hizo realidad. ¡Acompáñame a encender las linternas de mi noche especial!</p>
+    </div>
+    <div class="gallery">
+      <img class="tall" src="https://images.pexels.com/photos/31482000/pexels-photo-31482000.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Scarlette en su vestido lavanda" loading="lazy" />
+      <img src="https://images.pexels.com/photos/34538033/pexels-photo-34538033.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Celebración de XV años" loading="lazy" />
+      <img src="https://images.pexels.com/photos/12730973/pexels-photo-12730973.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Fiesta de XV años" loading="lazy" />
+    </div>
+  </div>
+
+  <div class="section-block reveal" style="padding-top:0;">
+    <span class="eyebrow" data-i18n="fam_eyebrow">Con la bendición de</span>
+    <h2 data-i18n="fam_title">Mi familia</h2>
+    <div class="family-card">
+      <h3 data-i18n="parents_h">Mis padres</h3>
+      <div class="name">Olivia Elizabeth Leyva Carrera</div>
+      <div class="name">Carlo Giovanni Aldaraca Castro</div>
+    </div>
+    <div class="family-card">
+      <h3 data-i18n="godm_h">Mis madrinas</h3>
+      <div class="name">Yuridia Blanco Luna</div>
+      <div class="name">Sulem Hernández Merino</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" style="padding-top:0;">
+    <span class="eyebrow" data-i18n="itin_eyebrow">Itinerario</span>
+    <h2 data-i18n="itin_title">El gran día</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
+        <div class="tcontent"><div class="ttime">4:00 pm</div><div class="tlabel" data-i18n="t1">Misa de acción de gracias</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
+        <div class="tcontent"><div class="ttime">6:00 – 7:30 pm</div><div class="tlabel" data-i18n="t2">Recepción y bienvenida de invitados</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
+        <div class="tcontent"><div class="ttime">7:30 – 8:30 pm</div><div class="tlabel" data-i18n="t3">Entrada y baile</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div></div>
+        <div class="tcontent"><div class="ttime">8:30 pm</div><div class="tlabel" data-i18n="t4">Cena</div></div>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-tag" data-i18n="place1_tag">Misa</div>
+      <h3>Iglesia del Carmen</h3>
+      <p>Orizaba, Veracruz</p>
+      <a class="mapbtn" href="https://maps.google.com/?q=Iglesia+del+Carmen+Orizaba+Veracruz" target="_blank" rel="noopener">📍 <span data-i18n="mapbtn">Cómo llegar</span></a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-tag" data-i18n="place2_tag">Recepción</div>
+      <h3>Salón Carrera</h3>
+      <p>Orizaba, Veracruz</p>
+      <iframe src="https://www.google.com/maps?q=Salon+Carrera+Orizaba+Veracruz&output=embed" loading="lazy" allowfullscreen></iframe>
+      <a class="mapbtn" href="https://maps.google.com/?q=Salon+Carrera+Orizaba+Veracruz" target="_blank" rel="noopener">📍 <span data-i18n="mapbtn2">Cómo llegar</span></a>
+    </div>
+  </div>
+
+  <div class="section-block reveal" style="padding-top:0;">
+    <div class="dress-card">
+      <h3 data-i18n="dress_title">Código de vestimenta: Formal</h3>
+      <p class="dress-sub" data-i18n="dress_sub">Estos colores están reservados para la quinceañera y su corte. Por favor evítalos en tu atuendo.</p>
+      <div class="palette">
+        <div class="sw-wrap"><div class="sw" style="background:#ECD677;"></div><span class="sw-name" data-i18n="c_gold">Dorado</span></div>
+        <div class="sw-wrap"><div class="sw" style="background:#FFFFFF;"></div><span class="sw-name" data-i18n="c_white">Blanco</span></div>
+        <div class="sw-wrap"><div class="sw" style="background:#E1C4FB;"></div><span class="sw-name" data-i18n="c_lilac">Lila</span></div>
+        <div class="sw-wrap"><div class="sw" style="background:#CC93D5;"></div><span class="sw-name" data-i18n="c_orchid">Orquídea</span></div>
+      </div>
+      <p class="dress-note" data-i18n="dress_note">Gracias por ayudarme a que mi noche luzca como un cuento 💜</p>
+    </div>
+
+    <div class="gift-card">
+      <h3 style="color:var(--plum);font-size:1.15rem;margin-bottom:6px;" data-i18n="gift_title">Mesa de regalos</h3>
+      <p data-i18n="gift_text">Tu presencia es el regalo más importante de esta noche. Si deseas obsequiarme algo, puedes consultar mi mesa de regalos o depositar un sobre en el cofre de los deseos.</p>
+
+      <div class="liverpool">
+        <div class="lv-brand">Liverpool</div>
+        <div class="lv-label" data-i18n="lv_label">Mesa de regalos · No. de evento</div>
+        <div class="lv-num" id="lv-num">52026311</div>
+        <button class="lv-copy" id="lv-copy" type="button" data-i18n="lv_copy">Copiar número</button>
+      </div>
+
+      <div class="chest-stage" id="chest-stage">
+        <div class="chest-rays" aria-hidden="true"></div>
+        <div class="chest-fx" id="chest-fx" aria-hidden="true"></div>
+        <button class="chest" id="chest" type="button" aria-label="Abrir el cofre de los deseos" aria-pressed="false">
+          <span class="chest-glow"></span>
+          <span class="chest-inside"><span class="slot-env">✉️</span></span>
+          <span class="chest-lid"><span class="band"></span><span class="gem">💜</span></span>
+          <span class="chest-body"><span class="band b1"></span><span class="band b2"></span><span class="lock">🔑</span></span>
+        </button>
+        <div class="chest-hint" id="chest-hint" data-i18n="chest_hint">Toca el cofre para abrirlo</div>
+      </div>
+      <p class="chest-note" data-i18n="chest_note">El día de la fiesta habrá un cofre en la mesa de regalos para que deposites tu sobre ✨</p>
+    </div>
+  </div>
+
+  <div class="inv-rsvp reveal" id="rsvp-section">
+    <div class="sparkle-layer" aria-hidden="true"></div>
+    <span class="eyebrow">RSVP</span>
+    <h2 data-i18n="rsvp_title">¿Me acompañas a celebrar?</h2>
+    <p class="sub" id="rsvp-sub"></p>
+    <div class="rsvp-form">
+      <select id="rsvp-count" aria-label="Personas"></select>
+      <div class="rsvp-btns">
+        <button class="rsvp-btn" id="rsvp-yes" onclick="setRSVP(true)" data-i18n="rsvp_yes">¡Sí, ahí estaré!</button>
+        <button class="rsvp-btn" id="rsvp-no" onclick="setRSVP(false)" data-i18n="rsvp_no">No podré ir</button>
+      </div>
+      <div class="rsvp-msg" id="rsvp-msg"></div>
+    </div>
+  </div>
+
+  <div class="inv-pass-wrap reveal">
+    <div class="wall-card" id="wall-card" hidden>
+      <div class="big">📸💬</div>
+      <h3 class="wall-h" data-i18n="wall_title">Muro de recuerdos</h3>
+      <p data-i18n="wall_text">Publica tus fotos y videos de la noche, o simplemente deja un mensaje para Scarlette. Comenta y dale like a los recuerdos de los demás.</p>
+      <a class="btn-post gold" id="wall-link" href="#" data-i18n="wall_btn">Ir al muro de recuerdos</a>
+    </div>
+    <div class="inv-pass" style="margin-top:20px;">
+      <div class="pass-label" data-i18n="pass_label">Tu pase de entrada</div>
+      <div class="inv-pass-qr" id="pass-qr"></div>
+      <div class="pass-name" id="pass-name"></div>
+      <div class="pass-count" id="pass-count-text"></div>
+      <div class="pass-hint" data-i18n="pass_hint">Muestra este código en la entrada</div>
+    </div>
+  </div>
+
+  <!-- Muro de recuerdos (fotos y comentarios de los invitados) -->
+  <div class="section-block wall-block reveal" id="wall-section" style="padding-top:0;">
+    <div class="thankyou-card">
+      <div class="script" id="ty-script">Gracias</div>
+      <p data-i18n="thankyou_msg">Gracias por acompañarme y ser parte de mi noche de cuento. Tu presencia hará esta celebración inolvidable.<br>— Scarlette</p>
+    </div>
+  </div>
+
+  <div class="inv-footer">
+    <span data-i18n="footer_text">Invitación hecha con</span> <a href="https://invitaciones-digitales-landing.onrender.com" target="_blank" rel="noopener">Invitaciones Digitales MX</a>
+  </div>
+</div>
+
+<script>
+/* ---------------- ENTORNO ---------------- */
+const IS_LOCAL = location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+document.getElementById('bgm').src = location.protocol === 'file:' ? 'musica.mp3' : '/musica.mp3';
+// botón del panel: solo en tu computadora (nunca lo ven los invitados en el sitio publicado)
+if (IS_LOCAL) {
+  const pb = document.getElementById('panel-fab');
+  pb.href = location.protocol === 'file:' ? 'http://localhost:3000/panel' : '/panel';
+  pb.hidden = false;
+  document.getElementById('wall-card').hidden = false; // vista previa
+}
+
+/* ---------------- DATOS DEL INVITADO ---------------- */
+const TOKEN = (location.pathname.match(/^\/i\/([\w-]+)/) || [])[1] || null;
+let guest = { nombre: '', pases: 2, mesa: '', rsvp: null, rsvpPases: null, wallUrl: null };
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ---------------- IDIOMA ---------------- */
+const translations = {
+  es: {
+    music_off: "Música", music_on: "Música",
+    seal_hint: "", enter_btn: "Presiona para entrar a la invitación", entering: "Abriendo…",
+    hero_eyebrow: "Mis XV años", hero_date: "12 · Diciembre · 2026",
+    cd_days: "Días", cd_hours: "Hrs", cd_min: "Min", cd_sec: "Seg",
+    greeting: "Con todo mi cariño para", greeting_name: "ti",
+    story_eyebrow: "Mi cuento", story_title: "Un sueño hecho realidad",
+    story_text: "Como en los cuentos, hoy la niña se convierte en princesa. Quiero celebrar esta noche mágica rodeada de las personas que más quiero — y tú eres una de ellas.",
+    quote: "Cuando mires las luces brillar, sabrás que mi sueño se hizo realidad. ¡Acompáñame a encender las linternas de mi noche especial!",
+    fam_eyebrow: "Con la bendición de", fam_title: "Mi familia",
+    parents_h: "Mis padres", godm_h: "Mis madrinas",
+    itin_eyebrow: "Itinerario", itin_title: "El gran día",
+    t1: "Misa de acción de gracias", t2: "Recepción y bienvenida de invitados", t3: "Entrada y baile", t4: "Cena",
+    place1_tag: "Misa", place2_tag: "Recepción",
+    mapbtn: "Cómo llegar", mapbtn2: "Cómo llegar",
+    dress_title: "Código de vestimenta: Formal",
+    dress_sub: "Estos colores están reservados para la quinceañera y su corte. Por favor evítalos en tu atuendo.",
+    dress_note: "Gracias por ayudarme a que mi noche luzca como un cuento 💜",
+    c_gold: "Dorado", c_white: "Blanco", c_lilac: "Lila", c_orchid: "Orquídea",
+    gift_title: "Mesa de regalos", gift_text: "Tu presencia es el regalo más importante de esta noche. Si deseas obsequiarme algo, puedes consultar mi mesa de regalos o depositar un sobre en el cofre de los deseos.",
+    lv_label: "Mesa de regalos · No. de evento", lv_copy: "Copiar número", lv_copied: "¡Número copiado!",
+    chest_hint: "Toca el cofre para abrirlo", chest_hint_open: "¡Lluvia de sobres! Toca otra vez ✨",
+    chest_note: "El día de la fiesta habrá un cofre en la mesa de regalos para que deposites tu sobre ✨",
+    rsvp_title: "¿Me acompañas a celebrar?",
+    rsvp_yes: "¡Sí, ahí estaré!", rsvp_no: "No podré ir",
+    table_label: "Tu mesa en el salón", table_sub: "Búscala al llegar, ahí te esperan tus lugares",
+    pass_label: "Tu pase de entrada", pass_hint: "Muestra este código en la entrada",
+    wall_eyebrow: "El día de la fiesta", wall_title: "Muro de recuerdos",
+    wall_text: "Publica tus fotos y videos de la noche, o simplemente deja un mensaje para Scarlette. Comenta y dale like a los recuerdos de los demás.",
+    wall_btn: "Ir al muro de recuerdos", wall_fab: "Muro de fotos",
+    thankyou_msg: "Gracias por acompañarme y ser parte de mi noche de cuento. Tu presencia hará esta celebración inolvidable.<br>— Scarlette",
+    footer_text: "Invitación hecha con",
+  },
+  en: {
+    music_off: "Music", music_on: "Music",
+    seal_hint: "", enter_btn: "Press to enter the invitation", entering: "Opening…",
+    hero_eyebrow: "My Quinceañera", hero_date: "December · 12 · 2026",
+    cd_days: "Days", cd_hours: "Hrs", cd_min: "Min", cd_sec: "Sec",
+    greeting: "With all my love for", greeting_name: "you",
+    story_eyebrow: "My story", story_title: "A dream come true",
+    story_text: "Like in the fairy tales, tonight the girl becomes a princess. I want to celebrate this magical night surrounded by the people I love most — and you're one of them.",
+    quote: "When you see the lights shine, you'll know my dream came true. Join me in lighting the lanterns of my special night!",
+    fam_eyebrow: "With the blessing of", fam_title: "My family",
+    parents_h: "My parents", godm_h: "My godmothers",
+    itin_eyebrow: "Itinerary", itin_title: "The big day",
+    t1: "Thanksgiving Mass", t2: "Reception & guest welcome", t3: "Grand entrance & dance", t4: "Dinner",
+    place1_tag: "Mass", place2_tag: "Reception",
+    mapbtn: "Get directions", mapbtn2: "Get directions",
+    dress_title: "Dress code: Formal",
+    dress_sub: "These colors are reserved for the quinceañera and her court. Please avoid them in your outfit.",
+    dress_note: "Thank you for helping my night look like a fairy tale 💜",
+    c_gold: "Gold", c_white: "White", c_lilac: "Lilac", c_orchid: "Orchid",
+    gift_title: "Gift registry", gift_text: "Your presence is the most important gift of the night. If you'd like to give me something, you can check my gift registry or drop an envelope in the wishing chest.",
+    lv_label: "Gift registry · Event No.", lv_copy: "Copy number", lv_copied: "Number copied!",
+    chest_hint: "Tap the chest to open it", chest_hint_open: "A shower of envelopes! Tap again ✨",
+    chest_note: "At the party there will be a chest at the gift table for your envelope ✨",
+    rsvp_title: "Will you join me?",
+    rsvp_yes: "Yes, I'll be there", rsvp_no: "I can't make it",
+    table_label: "Your assigned table", table_sub: "Look for it when you arrive, your seats are waiting",
+    pass_label: "Your entry pass", pass_hint: "Show this code at the entrance",
+    wall_eyebrow: "On the day of the party", wall_title: "Memory wall",
+    wall_text: "Post your photos and videos of the night, or just leave a message for Scarlette. Comment and like everyone else's memories.",
+    wall_btn: "Go to the memory wall", wall_fab: "Photo wall",
+    thankyou_msg: "Thank you for joining me and being part of my fairytale night. Your presence will make this celebration unforgettable.<br>— Scarlette",
+    footer_text: "Invitation made with",
+  }
+};
+let currentLang = 'es';
+
+function plural(n) {
+  return currentLang === 'es' ? `${n} persona${n > 1 ? 's' : ''}` : `${n} ${n > 1 ? 'people' : 'person'}`;
+}
+
+function refreshDynamic() {
+  const t = translations[currentLang];
+  const sel = document.getElementById('rsvp-count');
+  const keep = sel.value;
+  sel.innerHTML = '';
+  for (let i = 1; i <= guest.pases; i++) {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = i === 1
+      ? (currentLang === 'es' ? 'Voy solo/a (1 persona)' : "I'm coming alone (1 person)")
+      : (currentLang === 'es' ? `Asistiremos ${i}` : `${i} of us are coming`);
+    sel.appendChild(o);
+  }
+  sel.value = keep && Number(keep) <= guest.pases ? keep : (guest.rsvpPases || guest.pases);
+  sel.style.display = guest.pases > 1 ? '' : 'none';
+
+  document.getElementById('rsvp-sub').textContent = currentLang === 'es'
+    ? `Confirma tu asistencia — tu pase es válido para ${guest.pases === 1 ? '1 persona' : 'hasta ' + guest.pases + ' personas'}.`
+    : `Please confirm your attendance — your pass is valid for ${guest.pases === 1 ? '1 person' : 'up to ' + guest.pases + ' people'}.`;
+  document.getElementById('pass-name').textContent = guest.nombre || (currentLang === 'es' ? 'Invitado de ejemplo' : 'Sample guest');
+  document.getElementById('pass-count-text').textContent = currentLang === 'es'
+    ? `Válido para ${plural(guest.pases)}` : `Valid for ${plural(guest.pases)}`;
+  document.getElementById('guest-greeting').textContent = guest.nombre || t.greeting_name;
+  document.getElementById('ty-script').textContent = (currentLang === 'es' ? 'Gracias, ' : 'Thank you, ') + (guest.nombre || t.greeting_name);
+  paintRSVP();
+  if (typeof chestOpen !== 'undefined' && chestOpen) document.getElementById('chest-hint').textContent = t.chest_hint_open;
+}
+
+function applyLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+  });
+  document.getElementById('lang-toggle').innerHTML = lang === 'es' ? '🌐 EN' : '🌐 ES';
+  document.documentElement.lang = lang;
+  refreshDynamic();
+}
+function toggleLang() {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  applyLang(currentLang);
+}
+
+/* ---------------- MÚSICA ---------------- */
+let musicPlaying = false;
+function toggleMusic() {
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('music-toggle');
+  if (musicPlaying) {
+    audio.pause();
+    btn.innerHTML = `🔇 <span data-i18n="music_off">${translations[currentLang].music_off}</span>`;
+  } else {
+    audio.play().catch(() => {});
+    btn.innerHTML = `🎵 <span data-i18n="music_on">${translations[currentLang].music_on}</span>`;
+  }
+  musicPlaying = !musicPlaying;
+}
+
+let entering = false;
+function openInvitation() {
+  if (entering) return;
+  entering = true;
+  const btn = document.getElementById('enter-btn');
+  const hair = document.getElementById('cabello-dorado');
+  btn.disabled = true;
+  btn.textContent = translations[currentLang].entering;
+  if (!musicPlaying) toggleMusic();            // la música empieza con el toque del invitado
+  try { const L = Math.ceil(hair.getTotalLength()); hair.style.strokeDasharray = L; hair.style.strokeDashoffset = L; hair.getBoundingClientRect(); } catch {}
+  hair.style.strokeDashoffset = 0;              // el cabello cae
+  hair.classList.add('cayendo');
+  document.getElementById('escena-torre').classList.add('magia-activa');
+  // el cabello tarda 2.4 s en caer; esperamos 1 s más y entramos
+  setTimeout(() => document.getElementById('seal-overlay').classList.add('hidden'), 3400);
+}
+
+/* ---------------- RSVP ---------------- */
+function paintRSVP() {
+  const yes = document.getElementById('rsvp-yes');
+  const no = document.getElementById('rsvp-no');
+  yes.classList.toggle('chosen-yes', guest.rsvp === 'yes');
+  no.classList.toggle('chosen-no', guest.rsvp === 'no');
+  const msg = document.getElementById('rsvp-msg');
+  if (guest.rsvp === 'yes') {
+    msg.textContent = currentLang === 'es'
+      ? `¡Gracias por confirmar para ${plural(guest.rsvpPases || 1)}! Te esperamos 💜`
+      : `Thanks for confirming for ${plural(guest.rsvpPases || 1)}! See you there 💜`;
+  } else if (guest.rsvp === 'no') {
+    msg.textContent = currentLang === 'es' ? 'Gracias por avisarnos, te vamos a extrañar.' : "Thanks for letting us know, we'll miss you.";
+  } else if (!msg.dataset.error) {
+    msg.textContent = '';
+  }
+}
+
+async function setRSVP(yes) {
+  const msg = document.getElementById('rsvp-msg');
+  const personas = parseInt(document.getElementById('rsvp-count').value, 10) || 1;
+  msg.dataset.error = '';
+  if (!TOKEN) { // vista previa sin servidor
+    guest.rsvp = yes ? 'yes' : 'no';
+    guest.rsvpPases = yes ? personas : 0;
+    paintRSVP();
+    return;
+  }
+  const btns = document.querySelectorAll('.rsvp-btn');
+  btns.forEach(b => b.disabled = true);
+  try {
+    const r = await fetch(`/api/invitation/${encodeURIComponent(TOKEN)}/rsvp`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ asiste: yes, personas })
+    });
+    if (!r.ok) throw new Error();
+    guest = Object.assign(guest, await r.json());
+    paintRSVP();
+  } catch {
+    msg.dataset.error = '1';
+    msg.textContent = currentLang === 'es' ? 'No pudimos guardar tu respuesta. Intenta de nuevo.' : "We couldn't save your answer. Please try again.";
+  } finally {
+    btns.forEach(b => b.disabled = false);
+  }
+}
+
+/* ---------------- QR ---------------- */
+function drawQR() {
+  const holder = document.getElementById('pass-qr');
+  holder.innerHTML = '';
+  if (typeof QRCode === 'undefined') { // la librería no cargó: reintentar un momento después
+    if ((drawQR.tries = (drawQR.tries || 0) + 1) < 6) setTimeout(drawQR, 1500);
+    return;
+  }
+  const url = TOKEN ? `${location.origin}/i/${TOKEN}` : location.href;
+  new QRCode(holder, { text: url, width: 150, height: 150, colorDark: '#3F2457', colorLight: '#FFFFFF' });
+}
+
+/* ---------------- CARGA ---------------- */
+async function loadGuest() {
+  if (!TOKEN) { refreshDynamic(); drawQR(); return; }
+  let data;
+  try {
+    const r = await fetch(`/api/invitation/${encodeURIComponent(TOKEN)}`);
+    if (!r.ok) throw new Error('nf');
+    data = await r.json();
+  } catch {
+    document.getElementById('card').innerHTML = `
+      <div class="notfound"><h2>Invitación no encontrada</h2>
+      <p>Revisa que el link esté completo o pídele a Scarlette que te lo reenvíe.</p></div>`;
+    document.getElementById('seal-overlay').classList.add('hidden');
+    return;
+  }
+  guest = Object.assign(guest, data);
+  if (guest.wallUrl) {
+    document.getElementById('wall-link').href = guest.wallUrl;
+    document.getElementById('wall-fab').href = guest.wallUrl;
+    document.getElementById('wall-fab').hidden = false;
+    document.getElementById('wall-card').hidden = false;
+  }
+  refreshDynamic();
+  drawQR();
+}
+
+/* ---------------- LINTERNAS ---------------- */
+function spawnLantern() {
+  const layer = document.getElementById('lantern-layer');
+  const l = document.createElement('div');
+  l.className = 'lantern';
+  l.style.left = Math.random() * 100 + '%';
+  l.style.setProperty('--drift', (Math.random() * 60 - 30) + 'px');
+  const duration = 13 + Math.random() * 10;
+  l.style.animationDuration = duration + 's';
+  layer.appendChild(l);
+  setTimeout(() => l.remove(), duration * 1000);
+}
+for (let i = 0; i < 8; i++) setTimeout(spawnLantern, i * 1100);
+setInterval(spawnLantern, 2200);
+
+/* ---------------- FLORES ---------------- */
+const petalEmojis = ['🌼', '✨', '💮'];
+function spawnPetal() {
+  const layer = document.getElementById('petal-layer');
+  if (!layer) return;
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+  p.style.left = Math.random() * 100 + '%';
+  p.style.setProperty('--pdrift', (Math.random() * 70 - 35) + 'px');
+  p.style.fontSize = (11 + Math.random() * 9) + 'px';
+  const duration = 9 + Math.random() * 8;
+  p.style.animationDuration = duration + 's';
+  layer.appendChild(p);
+  setTimeout(() => p.remove(), duration * 1000);
+}
+for (let i = 0; i < 6; i++) setTimeout(spawnPetal, i * 1300);
+setInterval(spawnPetal, 2600);
+
+/* ---------------- DESTELLOS ---------------- */
+function spawnSparkle() {
+  document.querySelectorAll('.sparkle-layer').forEach(layer => {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    const duration = 1.6 + Math.random() * 1.8;
+    s.style.animationDuration = duration + 's';
+    layer.appendChild(s);
+    setTimeout(() => s.remove(), duration * 1000);
+  });
+}
+setInterval(spawnSparkle, 500);
+for (let i = 0; i < 10; i++) setTimeout(spawnSparkle, i * 150);
+
+/* ---------------- CUENTA REGRESIVA (12 dic 2026, 4:00 pm hora de México) ---------------- */
+const eventDate = new Date('2026-12-12T16:00:00-06:00');
+function updateCountdown() {
+  let diff = eventDate - new Date();
+  if (diff < 0) diff = 0;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff / 3600000) % 24);
+  const m = Math.floor((diff / 60000) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ---------------- COFRE DE LOS DESEOS ---------------- */
+const chest = document.getElementById('chest');
+const chestStage = document.getElementById('chest-stage');
+const chestFx = document.getElementById('chest-fx');
+let chestOpen = false, chestAuto = false;
+const reduceMotion = false;
+
+function chestBurst() {
+  if (reduceMotion) return;
+  const items = [['✉️', 'env', 9], ['💌', 'env', 4], ['✨', 'star', 8], ['⭐', 'star', 4], ['💜', 'star', 4]];
+  items.forEach(([emoji, kind, count]) => {
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('span');
+      el.className = 'fx ' + kind;
+      el.textContent = emoji;
+      el.style.setProperty('--x', (Math.random() * 220 - 110) + 'px');
+      el.style.setProperty('--up', -(70 + Math.random() * 120) + 'px');
+      el.style.setProperty('--r', (Math.random() * 120 - 60) + 'deg');
+      el.style.fontSize = (kind === 'env' ? 20 + Math.random() * 10 : 12 + Math.random() * 10) + 'px';
+      el.style.animationDelay = (Math.random() * 0.7) + 's';
+      chestFx.appendChild(el);
+      setTimeout(() => el.remove(), 3200);
+    }
+  });
+}
+
+function setChest(open) {
+  chestOpen = open;
+  chest.classList.toggle('open', open);
+  chestStage.classList.toggle('open', open);
+  chest.setAttribute('aria-pressed', String(open));
+  chest.setAttribute('aria-label', open ? 'Cerrar el cofre de los deseos' : 'Abrir el cofre de los deseos');
+  const t = translations[currentLang];
+  document.getElementById('chest-hint').textContent = open ? t.chest_hint_open : t.chest_hint;
+  if (open) setTimeout(chestBurst, 350);
+  chest.classList.remove('bounce'); void chest.offsetWidth; chest.classList.add('bounce');
+}
+chest.addEventListener('click', () => {
+  chestAuto = true;
+  if (chestOpen) { setChest(false); setTimeout(() => setChest(true), 450); } // volver a abrir = otra lluvia
+  else setChest(true);
+});
+// se abre solo la primera vez que llega a la pantalla
+if ('IntersectionObserver' in window) {
+  const co = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (e.isIntersecting && !chestAuto) { chestAuto = true; setTimeout(() => setChest(true), 700); co.disconnect(); }
+    });
+  }, { threshold: 0.7 });
+  co.observe(chestStage);
+}
+
+/* copiar número de Liverpool */
+document.getElementById('lv-copy').addEventListener('click', async () => {
+  const btn = document.getElementById('lv-copy');
+  const num = document.getElementById('lv-num').textContent.trim();
+  try { await navigator.clipboard.writeText(num); } catch { prompt('Copia el número:', num); return; }
+  const old = btn.textContent;
+  btn.textContent = translations[currentLang].lv_copied;
+  setTimeout(() => { btn.textContent = translations[currentLang].lv_copy; }, 1800);
+});
+
+/* ---------------- REVEAL AL HACER SCROLL ---------------- */
+function setupReveal() {
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('show'));
+  }
+}
+
+applyLang('es');
+setupReveal();
+loadGuest();
+</script>
+
+</body>
+</html>

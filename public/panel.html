@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Panel de la festejada — XV Scarlette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root {
+  --gold: #ECD677; --gold-deep: #B9992B; --gold-text: #8A6E10;
+  --lilac: #E1C4FB; --orchid: #CC93D5;
+  --plum: #5E3A7E; --plum-deep: #3F2457;
+  --cream: #FAF5FE; --cream-dark: #E9D9F6;
+  --ink: #2E2438; --ink-soft: #685B76; --white: #fff;
+  --green: #2f6b4f; --green-bg: #dff3e8; --red: #b0304a; --red-bg: #fbe3e8; --gray-bg: #efe9f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'EB Garamond', Georgia, serif; background: var(--cream); color: var(--ink); font-size: 17px; }
+button, input, select, textarea { font-family: inherit; font-size: inherit; }
+[hidden] { display: none !important; }
+
+/* login */
+#login { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; background: linear-gradient(160deg, #8a5aa6, var(--plum-deep)); }
+.login-box { background: var(--white); border-radius: 20px; padding: 30px 26px; width: 100%; max-width: 360px; text-align: center; border: 2px solid var(--gold); }
+.login-box .script { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--plum); line-height: 1.1; }
+.login-box p { color: var(--ink-soft); font-size: 0.95rem; margin: 6px 0 16px; }
+.login-box input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--cream-dark); background: var(--cream); text-align: center; }
+.login-err { color: var(--red); font-size: 0.9rem; min-height: 1.3em; margin-top: 8px; }
+
+/* layout */
+header.bar { background: linear-gradient(160deg, #8a5aa6, var(--plum-deep)); color: var(--white); padding: 16px 18px; border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+header.bar .script { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+header.bar small { display: block; color: rgba(255,255,255,0.8); font-size: 0.82rem; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px 14px 60px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
+.stat { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 14px; padding: 12px 14px; }
+.stat b { display: block; font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--plum); line-height: 1.1; }
+.stat span { font-size: 0.8rem; color: var(--ink-soft); letter-spacing: 0.03em; }
+
+.tabs { display: flex; gap: 6px; margin: 18px 0 12px; border-bottom: 2px solid var(--cream-dark); overflow-x: auto; }
+.tab { background: none; border: none; padding: 10px 16px; cursor: pointer; color: var(--ink-soft); border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; }
+.tab.on { color: var(--plum); border-color: var(--gold-deep); font-weight: 600; }
+
+.card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 16px; padding: 16px; margin-bottom: 14px; }
+.card h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--plum); margin: 0 0 10px; }
+
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+.toolbar .grow { flex: 1; min-width: 160px; }
+input[type=text], input[type=tel], input[type=number], input[type=search], select, textarea {
+  padding: 9px 11px; border-radius: 10px; border: 1px solid var(--cream-dark); background: var(--cream); color: var(--ink); width: 100%;
+}
+.toolbar input, .toolbar select { width: auto; }
+.toolbar input.grow { width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--orchid); outline-offset: 1px; background: var(--white); }
+
+.btn { display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer; padding: 9px 16px; border-radius: 999px; background: var(--plum); color: var(--white); text-decoration: none; white-space: nowrap; }
+.btn.gold { background: var(--gold); color: var(--plum-deep); font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--plum); border: 1.4px solid var(--orchid); }
+.btn.danger { background: var(--red); }
+.btn.sm { padding: 6px 10px; font-size: 0.9rem; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--cream-dark); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 820px; background: var(--white); }
+th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--cream-dark); vertical-align: middle; font-size: 0.95rem; }
+th { background: var(--cream); color: var(--plum); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; position: sticky; top: 0; }
+tr:last-child td { border-bottom: none; }
+td.name b { color: var(--plum-deep); }
+td.name small { display: block; color: var(--ink-soft); font-size: 0.78rem; }
+.act { display: flex; gap: 4px; flex-wrap: nowrap; }
+.act button { border: 1px solid var(--cream-dark); background: var(--cream); border-radius: 8px; padding: 5px 8px; cursor: pointer; font-size: 1rem; line-height: 1; }
+.act button:hover { background: var(--lilac); }
+.chip { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.8rem; background: var(--gray-bg); color: var(--ink-soft); white-space: nowrap; }
+.chip.yes { background: var(--green-bg); color: var(--green); }
+.chip.no { background: var(--red-bg); color: var(--red); }
+.chip.gold { background: #f8efc3; color: var(--gold-text); }
+.empty { text-align: center; color: var(--ink-soft); padding: 30px 10px; }
+
+/* modales */
+dialog { border: none; border-radius: 18px; padding: 0; width: min(94vw, 460px); box-shadow: 0 20px 60px rgba(40,20,60,0.4); color: var(--ink); }
+dialog::backdrop { background: rgba(40,20,60,0.55); }
+dialog form { padding: 20px; }
+dialog h3 { font-family: 'Playfair Display', serif; color: var(--plum); margin: 0 0 12px; }
+dialog label { display: block; font-size: 0.82rem; color: var(--ink-soft); margin: 10px 0 4px; }
+dialog .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+dialog .foot { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+dialog .hint { font-size: 0.82rem; color: var(--ink-soft); margin-top: 6px; }
+
+/* entrada */
+.scan-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.scan-row input { flex: 1; min-width: 200px; }
+#scan-video { width: 100%; max-width: 360px; border-radius: 12px; margin-top: 10px; background: #000; }
+.guest-big { border: 2px solid var(--gold); border-radius: 16px; padding: 16px; margin-top: 14px; background: var(--cream); }
+.guest-big h3 { font-family: 'Playfair Display', serif; color: var(--plum-deep); font-size: 1.4rem; margin: 0 0 6px; }
+.guest-big .meta { color: var(--ink-soft); }
+.guest-big .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.guest-big select { width: auto; }
+.warn { background: var(--red-bg); color: var(--red); border-radius: 10px; padding: 8px 12px; margin-top: 10px; font-size: 0.92rem; }
+.okmsg { background: var(--green-bg); color: var(--green); border-radius: 10px; padding: 8px 12px; margin-top: 10px; }
+
+/* muro */
+.linkbox { display: flex; gap: 8px; flex-wrap: wrap; }
+.linkbox input { flex: 1; min-width: 220px; }
+.mod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.mod { border: 1px solid var(--cream-dark); border-radius: 12px; overflow: hidden; background: var(--white); display: flex; flex-direction: column; }
+.mod .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; background: #1d1326; display: block; }
+.mod .info { padding: 8px 10px; font-size: 0.88rem; flex: 1; }
+.mod .info b { color: var(--plum); }
+.mod .cm { display: flex; justify-content: space-between; gap: 6px; border-top: 1px solid var(--cream-dark); padding: 4px 0; font-size: 0.82rem; }
+.mod .cm button { border: none; background: none; color: var(--red); cursor: pointer; }
+.mod .del { margin: 0 10px 10px; }
+
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--plum-deep); color: var(--white); padding: 10px 18px; border-radius: 999px; z-index: 200; box-shadow: 0 6px 20px rgba(0,0,0,0.3); max-width: 92vw; text-align: center; }
+
+/* impresión de QR */
+#print-area { display: none; }
+@media print {
+  @page { margin: 10mm; }
+  body > *:not(#print-area) { display: none !important; }
+  body { background: #fff; }
+  #print-area { display: grid !important; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .qr-card { border: 1.5px dashed #999; border-radius: 6mm; padding: 6mm; text-align: center; break-inside: avoid; page-break-inside: avoid; color: #2E2438; }
+  .qr-card .t { font-family: 'Great Vibes', cursive; font-size: 22pt; color: #5E3A7E; line-height: 1; }
+  .qr-card .s { font-size: 9pt; letter-spacing: 0.2em; text-transform: uppercase; color: #8A6E10; margin: 2mm 0 4mm; }
+  .qr-card .g { font-family: 'Playfair Display', serif; font-size: 14pt; margin: 4mm 0 1mm; }
+  .qr-card .m { font-size: 11pt; }
+  .qr-card .qr { display: inline-block; padding: 3mm; background: #fff; }
+  .qr-card .u { font-size: 7pt; color: #777; word-break: break-all; margin-top: 3mm; }
+}
+.qr-card .qr img, .qr-card .qr canvas { width: 42mm !important; height: 42mm !important; }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<section id="login" hidden>
+  <form class="login-box" id="login-form">
+    <div class="script">Scarlette Sahori</div>
+    <p>Panel de la festejada · XV años</p>
+    <input type="password" id="pw" placeholder="Contraseña" autocomplete="current-password" required />
+    <div class="login-err" id="login-err"></div>
+    <button class="btn gold" style="width:100%;justify-content:center;margin-top:8px" type="submit">Entrar</button>
+  </form>
+</section>
+
+<!-- ============ APP ============ -->
+<section id="app" hidden>
+  <header class="bar">
+    <div><div class="script">Scarlette Sahori</div><small>Panel de la festejada · 12 de diciembre de 2026</small></div>
+    <button class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,0.5)" id="logout">Salir</button>
+  </header>
+
+  <div class="wrap">
+    <div class="stats" id="stats"></div>
+
+    <div class="tabs">
+      <button class="tab on" data-tab="guests">👥 Invitados</button>
+      <button class="tab" data-tab="checkin">🎟 Entrada</button>
+      <button class="tab" data-tab="wall">📸 Muro de fotos</button>
+    </div>
+
+    <!-- Invitados -->
+    <div id="tab-guests">
+      <div class="toolbar">
+        <input type="search" class="grow" id="q" placeholder="Buscar por nombre, teléfono o mesa…" />
+        <select id="filter">
+          <option value="all">Todos</option>
+          <option value="unsent">Sin enviar</option>
+          <option value="pending">Sin respuesta</option>
+          <option value="yes">Confirmados</option>
+          <option value="no">No asisten</option>
+          <option value="in">Ya entraron</option>
+        </select>
+      </div>
+      <div class="toolbar">
+        <button class="btn gold" id="btn-add">＋ Agregar invitado</button>
+        <button class="btn ghost" id="btn-import">📋 Importar lista</button>
+        <button class="btn ghost" id="btn-tpl">💬 Mensaje de WhatsApp</button>
+        <button class="btn ghost" id="btn-print">🖨 Imprimir QR</button>
+        <button class="btn ghost" id="btn-csv">⬇ Excel (CSV)</button>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th style="width:34px"><input type="checkbox" id="sel-all" aria-label="Seleccionar todos" /></th>
+            <th>Invitado</th><th>Pases</th><th>Teléfono</th><th>Mesa</th><th>Respuesta</th><th>Entrada</th><th>Acciones</th>
+          </tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="rows-empty" hidden>Todavía no hay invitados. Agrégalos uno por uno o pega tu lista con “Importar lista”.</div>
+    </div>
+
+    <!-- Entrada -->
+    <div id="tab-checkin" hidden>
+      <div class="card">
+        <h2>Registrar entrada</h2>
+        <p style="margin:0 0 10px;color:var(--ink-soft)">Escanea el QR del invitado con una lectora o con la cámara, o pega su link / código.</p>
+        <div class="scan-row">
+          <input type="text" id="scan-input" placeholder="Pega aquí el link del QR y presiona Enter" autocomplete="off" />
+          <button class="btn" id="scan-go">Buscar</button>
+          <button class="btn ghost" id="scan-cam">📷 Cámara</button>
+        </div>
+        <video id="scan-video" playsinline muted hidden></video>
+        <div id="scan-result"></div>
+      </div>
+      <div class="card">
+        <h2>Últimas entradas</h2>
+        <div id="recent"></div>
+      </div>
+    </div>
+
+    <!-- Muro -->
+    <div id="tab-wall" hidden>
+      <div class="card">
+        <h2>Link del muro de fotos</h2>
+        <div class="linkbox">
+          <input type="text" id="wall-url" readonly />
+          <button class="btn" id="wall-copy">Copiar</button>
+          <a class="btn ghost" id="wall-open" target="_blank" rel="noopener">Abrir</a>
+        </div>
+        <p style="color:var(--ink-soft);font-size:0.9rem;margin:10px 0 0">Comparte este link (o imprime el QR para las mesas). Los invitados con su invitación personal entran con su nombre ya puesto.</p>
+        <div class="toolbar" style="margin-top:12px">
+          <button class="btn ghost" id="wall-qr">🖨 Imprimir QR del muro</button>
+          <button class="btn ghost" id="wall-toggle"></button>
+          <button class="btn gold" id="wall-zip">⬇ Descargar todas las fotos (ZIP)</button>
+        </div>
+        <div id="wall-stats" style="color:var(--ink-soft);font-size:0.92rem"></div>
+      </div>
+      <div class="card">
+        <h2>Publicaciones</h2>
+        <div class="mod-grid" id="mod-grid"></div>
+        <div class="empty" id="mod-empty" hidden>Aún no hay fotos en el muro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal invitado -->
+<dialog id="dlg-guest">
+  <form method="dialog" id="guest-form">
+    <h3 id="guest-title">Invitado</h3>
+    <label for="g-nombre">Nombre (como aparecerá en la invitación)</label>
+    <input type="text" id="g-nombre" maxlength="80" required placeholder="Familia Pérez López" />
+    <div class="row2">
+      <div><label for="g-pases">Número de pases</label><input type="number" id="g-pases" min="1" max="10" value="2" /></div>
+      <div><label for="g-mesa">Mesa</label><input type="text" id="g-mesa" maxlength="8" placeholder="5" /></div>
+    </div>
+    <label for="g-tel">WhatsApp (10 dígitos)</label>
+    <input type="tel" id="g-tel" maxlength="24" placeholder="272 123 4567" />
+    <label for="g-notas">Notas (solo tú las ves)</label>
+    <input type="text" id="g-notas" maxlength="200" />
+    <div class="foot">
+      <button type="button" class="btn ghost" data-close>Cancelar</button>
+      <button type="submit" class="btn gold">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Modal importar -->
+<dialog id="dlg-import">
+  <form method="dialog" id="import-form">
+    <h3>Importar lista de invitados</h3>
+    <p class="hint" style="margin-top:0">Una línea por invitado: <b>Nombre, pases, teléfono, mesa</b> (pases, teléfono y mesa son opcionales). Puedes pegar desde Excel.</p>
+    <textarea id="imp-text" rows="9" placeholder="Familia Pérez, 4, 2721234567, 3&#10;Tía Laura, 2&#10;Mariana Ruiz"></textarea>
+    <div class="hint" id="imp-count"></div>
+    <div class="foot">
+      <button type="button" class="btn ghost" data-close>Cancelar</button>
+      <button type="submit" class="btn gold">Importar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Modal mensaje -->
+<dialog id="dlg-tpl">
+  <form method="dialog" id="tpl-form">
+    <h3>Mensaje de WhatsApp</h3>
+    <p class="hint" style="margin-top:0">Usa <b>{nombre}</b> para el nombre del invitado y <b>{link}</b> para su invitación personal.</p>
+    <textarea id="tpl-text" rows="8"></textarea>
+    <div class="foot">
+      <button type="button" class="btn ghost" id="tpl-reset">Restaurar</button>
+      <button type="button" class="btn ghost" data-close>Cancelar</button>
+      <button type="submit" class="btn gold">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="print-area"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ======================== utilidades ======================== */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lsGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch {} };
+const lsDel = (k) => { try { localStorage.removeItem(k); } catch {} };
+
+let toastTimer;
+function toast(msg) {
+  const t = $('toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2800);
+}
+
+let TOKEN = lsGet('xv_admin') || '';
+let state = { guests: [], config: { wallCode: '', wallOpen: true }, posts: [] };
+
+async function api(path, opts = {}) {
+  const r = await fetch('/api/admin' + path, {
+    method: opts.method || 'GET',
+    headers: Object.assign({ 'x-admin-token': TOKEN }, opts.body ? { 'Content-Type': 'application/json' } : {}),
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  let data = {};
+  try { data = await r.json(); } catch {}
+  if (r.status === 401 && path !== '/login') { logout(); throw new Error('Sesión vencida'); }
+  if (!r.ok) throw new Error(data.error || 'Error');
+  return data;
+}
+
+const invLink = (g) => `${location.origin}/i/${g.token}`;
+const wallLink = () => `${location.origin}/muro/${state.config.wallCode}`;
+
+async function copy(text, okMsg) {
+  try { await navigator.clipboard.writeText(text); toast(okMsg || 'Copiado'); }
+  catch { prompt('Copia el texto:', text); }
+}
+
+/* ======================== sesión ======================== */
+function logout() {
+  TOKEN = ''; lsDel('xv_admin');
+  $('app').hidden = true; $('login').hidden = false;
+}
+$('logout').onclick = logout;
+
+$('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  $('login-err').textContent = '';
+  try {
+    const d = await api('/login', { method: 'POST', body: { password: $('pw').value } });
+    TOKEN = d.token; lsSet('xv_admin', TOKEN); $('pw').value = '';
+    await boot();
+  } catch (err) { $('login-err').textContent = err.message; }
+});
+
+async function boot() {
+  try {
+    state = await api('/state');
+  } catch { $('login').hidden = false; $('app').hidden = true; return; }
+  $('login').hidden = true; $('app').hidden = false;
+  renderAll();
+}
+
+async function refresh() {
+  try { state = await api('/state'); renderAll(); } catch {}
+}
+
+/* ======================== estadísticas ======================== */
+function renderStats() {
+  const gs = state.guests;
+  const pases = gs.reduce((a, g) => a + g.pases, 0);
+  const conf = gs.filter(g => g.rsvp === 'yes');
+  const confP = conf.reduce((a, g) => a + (g.rsvpPases || 0), 0);
+  const no = gs.filter(g => g.rsvp === 'no').length;
+  const pend = gs.filter(g => !g.rsvp).length;
+  const sent = gs.filter(g => g.enviado).length;
+  const inside = gs.filter(g => g.checkedIn);
+  const insideP = inside.reduce((a, g) => a + (g.checkedPersonas || 0), 0);
+  const cells = [
+    [gs.length, 'invitaciones'], [pases, 'pases en total'], [sent, 'enviadas'],
+    [confP, 'personas confirmadas'], [no, 'no asisten'], [pend, 'sin respuesta'],
+    [insideP, 'personas dentro'], [state.posts.length, 'fotos en el muro'],
+  ];
+  $('stats').innerHTML = cells.map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('');
+}
+
+/* ======================== invitados ======================== */
+const selected = new Set();
+
+function visibleGuests() {
+  const q = $('q').value.trim().toLowerCase();
+  const f = $('filter').value;
+  return state.guests.filter(g => {
+    if (q && !(`${g.nombre} ${g.telefono} ${g.mesa}`.toLowerCase().includes(q))) return false;
+    if (f === 'unsent') return !g.enviado;
+    if (f === 'pending') return !g.rsvp;
+    if (f === 'yes') return g.rsvp === 'yes';
+    if (f === 'no') return g.rsvp === 'no';
+    if (f === 'in') return g.checkedIn;
+    return true;
+  });
+}
+
+function renderGuests() {
+  const list = visibleGuests();
+  $('rows-empty').hidden = state.guests.length > 0;
+  $('rows').innerHTML = list.map(g => {
+    const resp = g.rsvp === 'yes' ? `<span class="chip yes">✓ Asiste (${g.rsvpPases})</span>`
+      : g.rsvp === 'no' ? `<span class="chip no">✗ No asiste</span>` : `<span class="chip">Pendiente</span>`;
+    const ent = g.checkedIn ? `<span class="chip gold">✓ ${g.checkedPersonas}</span>` : '<span class="chip">—</span>';
+    const sent = g.enviado ? '<span class="chip yes" style="margin-left:4px">Enviada</span>' : '';
+    return `<tr data-id="${esc(g.id)}">
+      <td><input type="checkbox" data-sel="${esc(g.id)}" ${selected.has(g.id) ? 'checked' : ''} aria-label="Seleccionar ${esc(g.nombre)}" /></td>
+      <td class="name"><b>${esc(g.nombre)}</b>${sent}${g.notas ? `<small>${esc(g.notas)}</small>` : ''}</td>
+      <td>${g.pases}</td>
+      <td>${esc(g.telefono) || '<span style="color:var(--ink-soft)">—</span>'}</td>
+      <td>${esc(g.mesa) || '—'}</td>
+      <td>${resp}</td>
+      <td>${ent}</td>
+      <td><div class="act">
+        <button data-act="wa" title="Enviar por WhatsApp" aria-label="Enviar por WhatsApp">💬</button>
+        <button data-act="link" title="Copiar link" aria-label="Copiar link">🔗</button>
+        <button data-act="qr" title="Imprimir QR" aria-label="Imprimir QR">🖨</button>
+        <button data-act="edit" title="Editar" aria-label="Editar">✏️</button>
+        <button data-act="del" title="Eliminar" aria-label="Eliminar">🗑</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  $('sel-all').checked = list.length > 0 && list.every(g => selected.has(g.id));
+}
+
+$('q').addEventListener('input', renderGuests);
+$('filter').addEventListener('change', renderGuests);
+$('sel-all').addEventListener('change', (e) => {
+  visibleGuests().forEach(g => e.target.checked ? selected.add(g.id) : selected.delete(g.id));
+  renderGuests();
+});
+
+/* --- WhatsApp --- */
+const DEFAULT_TPL = '¡Hola {nombre}! 💜✨ Te invito a mis XV años, una noche de cuento inspirada en Rapunzel: sábado 12 de diciembre de 2026. Aquí está tu invitación personal, con tu pase y tu mesa:\n{link}\n— Scarlette Sahori';
+const getTpl = () => lsGet('xv_wa_tpl') || DEFAULT_TPL;
+
+function waURL(g) {
+  let ph = (g.telefono || '').replace(/\D/g, '');
+  if (ph.length === 10) ph = '52' + ph;
+  const msg = getTpl().replace(/\{nombre\}/g, g.nombre).replace(/\{link\}/g, invLink(g));
+  return `https://wa.me/${ph}?text=${encodeURIComponent(msg)}`;
+}
+
+$('rows').addEventListener('click', async (e) => {
+  const sel = e.target.closest('[data-sel]');
+  if (sel) { sel.checked ? selected.add(sel.dataset.sel) : selected.delete(sel.dataset.sel); return; }
+  const b = e.target.closest('[data-act]');
+  if (!b) return;
+  const g = state.guests.find(x => x.id === b.closest('tr').dataset.id);
+  if (!g) return;
+  const act = b.dataset.act;
+  if (act === 'wa') {
+    window.open(waURL(g), '_blank', 'noopener');
+    if (!g.enviado) {
+      try { const u = await api('/guests/' + g.id, { method: 'PUT', body: { enviado: true } }); Object.assign(g, u); renderStats(); renderGuests(); } catch {}
+    }
+  } else if (act === 'link') {
+    copy(invLink(g), 'Link copiado');
+  } else if (act === 'qr') {
+    printCards([g]);
+  } else if (act === 'edit') {
+    openGuestDialog(g);
+  } else if (act === 'del') {
+    if (!confirm(`¿Eliminar a "${g.nombre}"? Su link dejará de funcionar.`)) return;
+    try { await api('/guests/' + g.id, { method: 'DELETE' }); selected.delete(g.id); await refresh(); toast('Invitado eliminado'); }
+    catch (err) { toast(err.message); }
+  }
+});
+
+/* --- agregar / editar --- */
+let editingId = null;
+function openGuestDialog(g) {
+  editingId = g ? g.id : null;
+  $('guest-title').textContent = g ? 'Editar invitado' : 'Agregar invitado';
+  $('g-nombre').value = g ? g.nombre : '';
+  $('g-pases').value = g ? g.pases : 2;
+  $('g-mesa').value = g ? g.mesa : '';
+  $('g-tel').value = g ? g.telefono : '';
+  $('g-notas').value = g ? g.notas : '';
+  $('dlg-guest').showModal();
+  $('g-nombre').focus();
+}
+$('btn-add').onclick = () => openGuestDialog(null);
+$('guest-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const body = {
+    nombre: $('g-nombre').value, pases: $('g-pases').value, mesa: $('g-mesa').value,
+    telefono: $('g-tel').value, notas: $('g-notas').value,
+  };
+  try {
+    if (editingId) await api('/guests/' + editingId, { method: 'PUT', body });
+    else await api('/guests', { method: 'POST', body });
+    $('dlg-guest').close();
+    await refresh();
+    toast(editingId ? 'Cambios guardados' : 'Invitado agregado');
+  } catch (err) { toast(err.message); }
+});
+
+document.querySelectorAll('dialog [data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
+
+/* --- importar --- */
+function parseImport(text) {
+  return text.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(line => {
+    const p = line.split(/\t|;|,/).map(s => s.trim());
+    const out = { nombre: p[0] };
+    if (p[1] && /^\d{1,2}$/.test(p[1])) out.pases = Number(p[1]);
+    if (p[2]) out.telefono = p[2];
+    if (p[3]) out.mesa = p[3];
+    return out;
+  }).filter(g => g.nombre);
+}
+$('btn-import').onclick = () => { $('imp-text').value = ''; $('imp-count').textContent = ''; $('dlg-import').showModal(); };
+$('imp-text').addEventListener('input', () => {
+  const n = parseImport($('imp-text').value).length;
+  $('imp-count').textContent = n ? `${n} invitado${n > 1 ? 's' : ''} por importar` : '';
+});
+$('import-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const list = parseImport($('imp-text').value);
+  if (!list.length) return toast('No hay nada que importar');
+  try {
+    const d = await api('/guests/bulk', { method: 'POST', body: { guests: list } });
+    $('dlg-import').close(); await refresh(); toast(`${d.created} invitados importados`);
+  } catch (err) { toast(err.message); }
+});
+
+/* --- mensaje WhatsApp --- */
+$('btn-tpl').onclick = () => { $('tpl-text').value = getTpl(); $('dlg-tpl').showModal(); };
+$('tpl-reset').onclick = () => { $('tpl-text').value = DEFAULT_TPL; };
+$('tpl-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  lsSet('xv_wa_tpl', $('tpl-text').value.trim() || DEFAULT_TPL);
+  $('dlg-tpl').close(); toast('Mensaje guardado');
+});
+
+/* --- CSV --- */
+$('btn-csv').onclick = () => { location.href = '/api/admin/guests.csv?t=' + encodeURIComponent(TOKEN); };
+
+/* ======================== imprimir QR ======================== */
+function printCards(items) {
+  // items: [{titulo, linea1, linea2, url}]
+  const area = $('print-area');
+  area.innerHTML = '';
+  items.forEach((it) => {
+    const card = document.createElement('div');
+    card.className = 'qr-card';
+    card.innerHTML = `<div class="t">Scarlette Sahori</div><div class="s">${esc(it.sub)}</div>
+      <div class="qr"></div>
+      <div class="g">${esc(it.linea1)}</div><div class="m">${esc(it.linea2 || '')}</div>
+      <div class="u">${esc(it.url)}</div>`;
+    area.appendChild(card);
+    new QRCode(card.querySelector('.qr'), { text: it.url, width: 220, height: 220, colorDark: '#3F2457', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M });
+  });
+  setTimeout(() => window.print(), 450);
+}
+function guestCard(g) {
+  const parts = [`${g.pases} ${g.pases === 1 ? 'pase' : 'pases'}`];
+  if (g.mesa) parts.push('Mesa ' + g.mesa);
+  return { sub: 'Mis XV años · 12 dic 2026', linea1: g.nombre, linea2: parts.join(' · '), url: invLink(g) };
+}
+$('btn-print').onclick = () => {
+  let list = state.guests.filter(g => selected.has(g.id));
+  if (!list.length) {
+    list = visibleGuests();
+    if (!list.length) return toast('No hay invitados para imprimir');
+    if (!confirm(`No seleccionaste a nadie. ¿Imprimir los ${list.length} QR de la lista actual?`)) return;
+  }
+  printCards(list.map(guestCard));
+};
+
+/* ======================== entrada ======================== */
+let current = null;
+
+function extractToken(v) {
+  const m = String(v).match(/\/i\/([\w-]+)/);
+  return m ? m[1] : String(v).trim();
+}
+
+async function lookup(raw) {
+  const out = $('scan-result');
+  out.innerHTML = '';
+  const t = extractToken(raw);
+  if (!t) return;
+  try {
+    current = await api('/lookup?token=' + encodeURIComponent(t));
+    renderCurrent();
+  } catch (err) { current = null; out.innerHTML = `<div class="warn">${esc(err.message)}</div>`; }
+}
+
+function renderCurrent(msg) {
+  const g = current; const out = $('scan-result');
+  if (!g) { out.innerHTML = ''; return; }
+  const opts = Array.from({ length: g.pases }, (_, i) => i + 1)
+    .map(n => `<option value="${n}" ${n === (g.checkedPersonas || g.rsvpPases || g.pases) ? 'selected' : ''}>${n} persona${n > 1 ? 's' : ''}</option>`).join('');
+  const resp = g.rsvp === 'yes' ? `Confirmó ${g.rsvpPases} persona${g.rsvpPases > 1 ? 's' : ''}` : g.rsvp === 'no' ? 'Respondió que NO asiste' : 'No ha respondido';
+  const when = g.checkedInAt ? new Date(g.checkedInAt).toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) : '';
+  out.innerHTML = `<div class="guest-big">
+    <h3>${esc(g.nombre)}</h3>
+    <div class="meta">${g.pases} ${g.pases === 1 ? 'pase' : 'pases'} · ${g.mesa ? 'Mesa ' + esc(g.mesa) : 'Sin mesa asignada'} · ${resp}</div>
+    ${g.rsvp === 'no' ? '<div class="warn">Esta invitación respondió que no asistiría; verifica antes de dejar pasar.</div>' : ''}
+    ${g.checkedIn ? `<div class="okmsg">✓ Ya registrada a las ${when} (${g.checkedPersonas} persona${g.checkedPersonas > 1 ? 's' : ''})</div>` : ''}
+    ${msg ? `<div class="okmsg">${esc(msg)}</div>` : ''}
+    <div class="controls">
+      <select id="ck-n" aria-label="Personas que entran">${opts}</select>
+      ${g.checkedIn
+        ? '<button class="btn danger" id="ck-undo">Deshacer entrada</button>'
+        : '<button class="btn gold" id="ck-go">✓ Registrar entrada</button>'}
+    </div></div>`;
+  const go = $('ck-go'), undo = $('ck-undo');
+  if (go) go.onclick = async () => {
+    try {
+      current = await api(`/guests/${current.id}/checkin`, { method: 'POST', body: { personas: $('ck-n').value } });
+      await refreshQuiet(); renderCurrent('¡Entrada registrada! Que disfrute la fiesta 🎉');
+      $('scan-input').value = ''; $('scan-input').focus();
+    } catch (err) { toast(err.message); }
+  };
+  if (undo) undo.onclick = async () => {
+    try { current = await api(`/guests/${current.id}/checkin`, { method: 'DELETE' }); await refreshQuiet(); renderCurrent('Entrada deshecha'); }
+    catch (err) { toast(err.message); }
+  };
+}
+
+async function refreshQuiet() { try { state = await api('/state'); renderStats(); renderGuests(); renderRecent(); renderWall(); } catch {} }
+
+function renderRecent() {
+  const list = state.guests.filter(g => g.checkedIn).sort((a, b) => b.checkedInAt - a.checkedInAt).slice(0, 12);
+  $('recent').innerHTML = list.length
+    ? list.map(g => `<div style="display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--cream-dark)">
+        <span><b>${esc(g.nombre)}</b> <span style="color:var(--ink-soft)">· ${g.checkedPersonas} persona${g.checkedPersonas > 1 ? 's' : ''}${g.mesa ? ' · Mesa ' + esc(g.mesa) : ''}</span></span>
+        <span style="color:var(--ink-soft)">${new Date(g.checkedInAt).toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' })}</span></div>`).join('')
+    : '<div class="empty">Todavía no se registra ninguna entrada.</div>';
+}
+
+$('scan-go').onclick = () => lookup($('scan-input').value);
+$('scan-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); lookup($('scan-input').value); } });
+
+let stream = null, scanTimer = null;
+function stopScan() {
+  clearInterval(scanTimer); scanTimer = null;
+  if (stream) stream.getTracks().forEach(t => t.stop());
+  stream = null; $('scan-video').hidden = true;
+}
+$('scan-cam').onclick = async () => {
+  if (stream) return stopScan();
+  if (!('BarcodeDetector' in window)) return toast('Tu navegador no escanea QR. Usa Chrome en Android o pega el link.');
+  try {
+    const det = new BarcodeDetector({ formats: ['qr_code'] });
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    const v = $('scan-video'); v.srcObject = stream; v.hidden = false; await v.play();
+    scanTimer = setInterval(async () => {
+      try { const codes = await det.detect(v); if (codes.length) { const raw = codes[0].rawValue; stopScan(); lookup(raw); } } catch {}
+    }, 400);
+  } catch { toast('No se pudo abrir la cámara.'); stopScan(); }
+};
+
+/* ======================== muro ======================== */
+function renderWall() {
+  const url = wallLink();
+  $('wall-url').value = url;
+  $('wall-open').href = url;
+  $('wall-toggle').textContent = state.config.wallOpen ? '⏸ Cerrar subidas' : '▶ Reabrir subidas';
+  const comments = state.posts.reduce((a, p) => a + p.comments.length, 0);
+  const likes = state.posts.reduce((a, p) => a + p.likes, 0);
+  $('wall-stats').textContent = `${state.posts.length} publicaciones · ${comments} comentarios · ${likes} likes · el muro está ${state.config.wallOpen ? 'ABIERTO' : 'CERRADO'}`;
+  $('mod-empty').hidden = state.posts.length > 0;
+  $('mod-grid').innerHTML = state.posts.map(p => {
+    const media = p.kind === 'text' ? '<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:2.4rem;aspect-ratio:2/1">💬</div>'
+      : p.kind === 'video'
+      ? `<video class="thumb" src="${esc(p.url)}" controls preload="metadata" playsinline></video>`
+      : `<img class="thumb" src="${esc(p.url)}" alt="" loading="lazy" />`;
+    const cms = p.comments.map(c => `<div class="cm"><span><b>${esc(c.author)}:</b> ${esc(c.text)}</span><button data-delc="${esc(p.id)}|${esc(c.id)}" title="Borrar comentario">✕</button></div>`).join('');
+    return `<div class="mod">${media}
+      <div class="info"><b>${esc(p.author)}</b> · ❤️ ${p.likes}<br>${esc(p.caption)}${cms}</div>
+      <button class="btn danger sm del" data-delp="${esc(p.id)}">Eliminar</button></div>`;
+  }).join('');
+}
+
+$('wall-copy').onclick = () => copy(wallLink(), 'Link del muro copiado');
+$('wall-zip').onclick = () => { location.href = '/api/admin/photos.zip?t=' + encodeURIComponent(TOKEN); };
+$('wall-qr').onclick = () => printCards([{ sub: 'Muro de recuerdos', linea1: 'Escanea y comparte tus fotos', linea2: 'Sube, comenta y dale like 📸', url: wallLink() }]);
+$('wall-toggle').onclick = async () => {
+  try { state.config = await api('/config', { method: 'PUT', body: { wallOpen: !state.config.wallOpen } }); renderWall(); toast(state.config.wallOpen ? 'Muro abierto' : 'Muro cerrado'); }
+  catch (err) { toast(err.message); }
+};
+$('mod-grid').addEventListener('click', async (e) => {
+  const dp = e.target.closest('[data-delp]'), dc = e.target.closest('[data-delc]');
+  try {
+    if (dp) {
+      if (!confirm('¿Eliminar esta publicación y su archivo?')) return;
+      await api('/posts/' + dp.dataset.delp, { method: 'DELETE' }); await refresh(); toast('Publicación eliminada');
+    } else if (dc) {
+      const [pid, cid] = dc.dataset.delc.split('|');
+      await api(`/posts/${pid}/comments/${cid}`, { method: 'DELETE' }); await refresh();
+    }
+  } catch (err) { toast(err.message); }
+});
+
+/* ======================== pestañas ======================== */
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
+  ['guests', 'checkin', 'wall'].forEach(n => $('tab-' + n).hidden = n !== t.dataset.tab);
+  if (t.dataset.tab === 'checkin') { renderRecent(); $('scan-input').focus(); }
+  if (t.dataset.tab !== 'checkin') stopScan();
+  if (t.dataset.tab === 'wall') refresh();
+});
+
+function renderAll() { renderStats(); renderGuests(); renderRecent(); renderWall(); }
+
+if (TOKEN) boot(); else $('login').hidden = false;
+</script>
+</body>
+</html>
