@@ -7,7 +7,7 @@
 <title>Panel de la festejada — XV Scarlette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="vendor/qrcode.min.js"></script>
 <style>
 :root {
   --gold: #ECD677; --gold-deep: #B9992B; --gold-text: #8A6E10;
@@ -457,7 +457,7 @@ $('rows').addEventListener('click', async (e) => {
   } else if (act === 'link') {
     copy(invLink(g), 'Link copiado');
   } else if (act === 'qr') {
-    printCards([g]);
+    printCards([guestCard(g)]);
   } else if (act === 'edit') {
     openGuestDialog(g);
   } else if (act === 'del') {
@@ -538,7 +538,10 @@ $('btn-csv').onclick = () => { location.href = '/api/admin/guests.csv?t=' + enco
 
 /* ======================== imprimir QR ======================== */
 function printCards(items) {
-  // items: [{titulo, linea1, linea2, url}]
+  // items: [{sub, linea1, linea2, url}]  (usa guestCard(g) para un invitado)
+  items = items.filter(it => it && it.url);
+  if (!items.length) return toast('No se pudo preparar el QR');
+  if (typeof QRCode === 'undefined') return toast('No cargó el generador de QR. Recarga la página.');
   const area = $('print-area');
   area.innerHTML = '';
   items.forEach((it) => {

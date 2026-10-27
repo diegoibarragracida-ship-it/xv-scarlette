@@ -147,6 +147,7 @@ app.use(express.json({ limit: '200kb' }));
 
 const PUB = path.join(__dirname, 'public');
 app.use('/uploads', express.static(UPLOAD_DIR, { maxAge: '7d', immutable: true, index: false, dotfiles: 'deny' }));
+app.use('/i/vendor', express.static(path.join(PUB, 'vendor'), { maxAge: '30d', index: false }));
 app.use('/i/fotos', express.static(path.join(PUB, 'fotos'), { maxAge: '7d', index: false }));
 app.get('/i/:token', (req, res) => res.sendFile(path.join(PUB, 'index.html')));
 app.get('/muro/:code', (req, res) => res.sendFile(path.join(PUB, 'muro.html')));
