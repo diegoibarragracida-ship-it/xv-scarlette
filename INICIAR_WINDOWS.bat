@@ -15,13 +15,19 @@ if not exist node_modules (
   call npm install
 )
 
+REM Cierra cualquier servidor anterior que siga abierto en el puerto 3000
+REM (si queda uno viejo, el panel usaria OTRA contrasena)
+for /f "tokens=5" %%a in ('netstat -aon ^| findstr ":3000 " ^| findstr "LISTENING"') do taskkill /F /PID %%a >nul 2>nul
+
 REM Contrasena SOLO para probar en tu computadora. Cambiala antes de publicar.
 set ADMIN_PASSWORD=scarlette2026
 set PORT=3000
 
 echo.
-echo  Panel:      http://localhost:3000/panel   (contrasena: %ADMIN_PASSWORD%)
-echo  Invitacion: se genera por invitado desde el panel
+echo  ============================================
+echo   Panel:       http://localhost:3000/panel
+echo   Contrasena:  scarlette2026
+echo  ============================================
 echo  Deja esta ventana abierta mientras pruebas. Cierra con Ctrl+C.
 echo.
 start "" http://localhost:3000/panel

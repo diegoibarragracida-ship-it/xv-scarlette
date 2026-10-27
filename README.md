@@ -41,3 +41,9 @@ Sin disco persistente las fotos y la lista se pierden en cada deploy.
 ## Pendiente de personalizar
 - Fotos reales de Scarlette en `public/index.html` (sección hero y galería).
 - Dirección exacta del Salón Carrera (mapa).
+
+## Fotos
+Están en `public/fotos`. El fondo de la invitación es `fondo-rapunzel.jpg`. El carrusel "De pequeñita a quinceañera" se edita en la lista `FOTOS` de `public/index.html` (orden y pies de foto). Para agregar la foto actual de Scarlette: guárdala en `public/fotos` y añade una línea a `FOTOS`.
+
+## Publicar
+Mira `DEPLOY.md` (Render, con `render.yaml`).

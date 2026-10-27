@@ -183,10 +183,11 @@ a.float-btn { text-decoration: none; }
 
 .inv-hero {
   padding: 80px 30px 50px; text-align: center; color: var(--white); position: relative;
-  background: linear-gradient(rgba(63,36,87,0.5), rgba(63,36,87,0.72)),
-              url('https://images.pexels.com/photos/31482000/pexels-photo-31482000.jpeg?auto=compress&cs=tinysrgb&w=1000') center 30%/cover;
+  background: linear-gradient(rgba(40,18,62,0.30), rgba(40,18,62,0.68)),
+              url('fotos/fondo-rapunzel.jpg') center 22%/cover;
 }
 .inv-hero .eyebrow { font-style: italic; letter-spacing: 0.26em; text-transform: uppercase; font-size: 0.72rem; color: rgba(255,255,255,0.88); }
+.inv-hero h1, .inv-hero .eyebrow, .inv-hero .datebox { text-shadow: 0 2px 10px rgba(30,10,50,0.85), 0 0 3px rgba(30,10,50,0.6); }
 .inv-hero h1 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 3.4rem; margin: 14px 0 4px; line-height: 1.05; }
 .inv-hero .datebox { margin-top: 18px; display: inline-flex; gap: 10px; align-items: center; font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
 
@@ -220,6 +221,46 @@ a.float-btn { text-decoration: none; }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; }
 .gallery img.tall { height: 100%; grid-row: span 2; }
+
+
+/* --- carrusel de fotos --- */
+.film-title { text-align: center; margin-top: 26px; font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--plum); }
+.film {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 26px 22px; margin: 0;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; cursor: grab; outline: none;
+}
+.film.dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; user-select: none; }
+.film.dragging .polaroid { cursor: grabbing; }
+.film-wrap { position: relative; margin: 4px -30px 0; }
+.film-arrow {
+  position: absolute; top: 46%; transform: translateY(-50%); z-index: 3; width: 42px; height: 42px; border-radius: 50%; padding: 0 0 4px;
+  border: 2px solid #fff; background: linear-gradient(135deg, #FFF3B8, var(--gold) 60%, #d9b94a); color: var(--plum-deep);
+  font-size: 1.9rem; line-height: 1; font-family: Georgia, serif; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(63,36,87,0.35); transition: opacity 0.2s, transform 0.2s;
+}
+.film-arrow:hover { transform: translateY(-50%) scale(1.1); }
+.film-arrow.prev { left: 8px; } .film-arrow.next { right: 8px; }
+.film-arrow[disabled] { opacity: 0; pointer-events: none; }
+.film::-webkit-scrollbar { display: none; }
+.polaroid {
+  flex: 0 0 auto; width: 190px; margin: 0; padding: 9px 9px 12px; background: #fff; border-radius: 6px; scroll-snap-align: center;
+  box-shadow: 0 6px 18px rgba(63,36,87,0.22), 0 0 0 1.5px rgba(236,214,119,0.75); transform: rotate(var(--rot, 0deg)); transition: transform 0.25s ease; cursor: zoom-in;
+}
+.polaroid:hover { transform: rotate(0deg) scale(1.03); }
+.polaroid img { display: block; width: 100%; height: 235px; object-fit: cover; object-position: center 25%; border-radius: 3px; background: var(--cream-dark); }
+.polaroid figcaption { margin-top: 9px; text-align: center; font-family: 'Great Vibes', cursive; font-size: 1.35rem; color: var(--plum); line-height: 1.1; min-height: 1.3em; }
+.polaroid.fin {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: default; height: 281px;
+  background: linear-gradient(160deg, var(--plum), var(--plum-deep)); color: var(--gold); box-shadow: 0 6px 18px rgba(63,36,87,0.3), 0 0 0 1.5px var(--gold);
+}
+.polaroid.fin .n { font-family: 'Playfair Display', serif; font-size: 3.4rem; line-height: 1; }
+.polaroid.fin .t { font-family: 'Great Vibes', cursive; font-size: 1.7rem; margin-top: 6px; color: #fff; }
+.film-hint { text-align: center; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-text); margin-top: -4px; }
+.lightbox { position: fixed; inset: 0; z-index: 70; background: rgba(20,10,30,0.93); display: none; align-items: center; justify-content: center; flex-direction: column; gap: 12px; padding: 16px; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 0 2px var(--gold); }
+.lightbox .lb-cap { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--gold); }
+.lightbox button { border: none; background: var(--gold); color: var(--plum-deep); border-radius: 999px; padding: 9px 22px; font-family: inherit; font-size: 0.95rem; cursor: pointer; }
 
 /* --- padres y madrinas --- */
 .family-card {
@@ -623,6 +664,8 @@ a.float-btn { text-decoration: none; }
   <button class="enter-btn" id="enter-btn" type="button" onclick="openInvitation()" data-i18n="enter_btn">Presiona para entrar a la invitación</button>
 </div>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><img id="lb-img" alt="" /><div class="lb-cap" id="lb-cap"></div><button type="button" id="lb-close" data-i18n="lb_close">Cerrar</button></div>
+
 <div class="card" id="card">
 
   <div class="inv-hero">
@@ -651,11 +694,13 @@ a.float-btn { text-decoration: none; }
     <div class="lantern-quote">
       <p data-i18n="quote">Cuando mires las luces brillar, sabrás que mi sueño se hizo realidad. ¡Acompáñame a encender las linternas de mi noche especial!</p>
     </div>
-    <div class="gallery">
-      <img class="tall" src="https://images.pexels.com/photos/31482000/pexels-photo-31482000.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Scarlette en su vestido lavanda" loading="lazy" />
-      <img src="https://images.pexels.com/photos/34538033/pexels-photo-34538033.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Celebración de XV años" loading="lazy" />
-      <img src="https://images.pexels.com/photos/12730973/pexels-photo-12730973.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Fiesta de XV años" loading="lazy" />
+    <div class="film-title" data-i18n="film_title">De pequeñita a quinceañera</div>
+    <div class="film-wrap">
+      <button class="film-arrow prev" id="film-prev" type="button" aria-label="Foto anterior">‹</button>
+      <div class="film" id="film" tabindex="0" aria-label="Fotos de Scarlette"></div>
+      <button class="film-arrow next" id="film-next" type="button" aria-label="Foto siguiente">›</button>
     </div>
+    <div class="film-hint" id="film-hint" data-i18n="film_hint">Desliza para ver más →</div>
   </div>
 
   <div class="section-block reveal" style="padding-top:0;">
@@ -846,6 +891,7 @@ const translations = {
     wall_eyebrow: "El día de la fiesta", wall_title: "Muro de recuerdos",
     wall_text: "Publica tus fotos y videos de la noche, o simplemente deja un mensaje para Scarlette. Comenta y dale like a los recuerdos de los demás.",
     wall_btn: "Ir al muro de recuerdos", wall_fab: "Muro de fotos",
+    film_title: "De pequeñita a quinceañera", film_hint: "Desliza o usa las flechas →", lb_close: "Cerrar",
     thankyou_msg: "Gracias por acompañarme y ser parte de mi noche de cuento. Tu presencia hará esta celebración inolvidable.<br>— Scarlette",
     footer_text: "Invitación hecha con",
   },
@@ -879,6 +925,7 @@ const translations = {
     wall_eyebrow: "On the day of the party", wall_title: "Memory wall",
     wall_text: "Post your photos and videos of the night, or just leave a message for Scarlette. Comment and like everyone else's memories.",
     wall_btn: "Go to the memory wall", wall_fab: "Photo wall",
+    film_title: "From little girl to quinceañera", film_hint: "Swipe or use the arrows →", lb_close: "Close",
     thankyou_msg: "Thank you for joining me and being part of my fairytale night. Your presence will make this celebration unforgettable.<br>— Scarlette",
     footer_text: "Invitation made with",
   }
@@ -924,6 +971,7 @@ function applyLang(lang) {
   });
   document.getElementById('lang-toggle').innerHTML = lang === 'es' ? '🌐 EN' : '🌐 ES';
   document.documentElement.lang = lang;
+  if (typeof renderFilm === 'function' && document.getElementById('film')) renderFilm(); if (window.filmUpdate) window.filmUpdate();
   refreshDynamic();
 }
 function toggleLang() {
@@ -1047,7 +1095,90 @@ async function loadGuest() {
   drawQR();
 }
 
-/* ---------------- LINTERNAS ---------------- */
+/* ---------------- FOTOS: DE PEQUEÑITA A QUINCEAÑERA ----------------
+   Para cambiar el orden, quitar o poner pies de foto, edita esta lista.
+   Las fotos están en la carpeta public/fotos. */
+const FOTOS = [
+  { src: 'fotos/01-bebe-2012.jpg',  es: 'Enero 2012',        en: 'January 2012' },
+  { src: 'fotos/02-minnie.jpg',     es: 'Mi Minnie',        en: 'My Minnie' },
+  { src: 'fotos/03-sofia.jpg',      es: 'Mi cumpleaños',    en: 'My birthday' },
+  { src: 'fotos/04-elsa.jpg',       es: 'Princesa azul',    en: 'Blue princess' },
+  { src: 'fotos/05-unicornio.jpg',  es: 'Unicornios',        en: 'Unicorns' },
+  { src: 'fotos/06-peluche.jpg',    es: 'Mi unicornio',     en: 'My unicorn' },
+  { src: 'fotos/07-9anos.jpg',      es: '9 años',            en: '9 years old' },
+  { src: 'fotos/08-10anos.jpg',     es: '10 años',           en: '10 years old' },
+  { src: 'fotos/09-cumple.jpg',     es: 'Cumpleaños',       en: 'Birthday' },
+  { src: 'fotos/10-12anos.jpg',     es: '12 años',           en: '12 years old' },
+];
+function renderFilm() {
+  const film = document.getElementById('film');
+  const L = currentLang;
+  film.innerHTML = FOTOS.map((f, i) => {
+    const rot = [-2.5, 2, -1.5, 2.5, -2, 1.5][i % 6];
+    return `<figure class="polaroid" style="--rot:${rot}deg" data-i="${i}"><img src="${f.src}" alt="${esc(f[L])}" loading="lazy" /><figcaption>${esc(f[L])}</figcaption></figure>`;
+  }).join('') + `<figure class="polaroid fin"><div class="n">15</div><div class="t">${L === 'es' ? '¡Mis XV!' : 'My XV!'}</div></figure>`;
+}
+document.getElementById('film').addEventListener('click', (e) => {
+  const fig = e.target.closest('.polaroid[data-i]');
+  if (!fig || window.filmMoved) return;
+  const f = FOTOS[Number(fig.dataset.i)];
+  document.getElementById('lb-img').src = f.src;
+  document.getElementById('lb-cap').textContent = f[currentLang];
+  document.getElementById('lightbox').classList.add('open');
+});
+const closeLb = () => document.getElementById('lightbox').classList.remove('open');
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target.id === 'lightbox') closeLb(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+/* flechas, arrastre con el mouse y teclado */
+(function () {
+  const film = document.getElementById('film');
+  const prev = document.getElementById('film-prev'), next = document.getElementById('film-next');
+  const step = () => Math.max(200, Math.round(film.clientWidth * 0.8));
+  const update = () => {
+    const max = film.scrollWidth - film.clientWidth;
+    prev.disabled = film.scrollLeft <= 4;
+    next.disabled = film.scrollLeft >= max - 4;
+  };
+  prev.addEventListener('click', () => film.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => film.scrollBy({ left: step(), behavior: 'smooth' }));
+  film.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  film.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); }
+  });
+  // arrastrar con el mouse (en pantallas táctiles ya se desliza con el dedo)
+  let down = false, startX = 0, startLeft = 0;
+  window.filmMoved = false;
+  film.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true; window.filmMoved = false; startX = e.clientX; startLeft = film.scrollLeft;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) { window.filmMoved = true; film.classList.add('dragging'); }
+    if (window.filmMoved) film.scrollLeft = startLeft - dx;
+  });
+  const end = () => {
+    if (!down) return; down = false;
+    film.classList.remove('dragging');
+    if (window.filmMoved) { // que quede alineada la foto más cercana
+      const cards = [...film.querySelectorAll('.polaroid')], c = film.scrollLeft + film.clientWidth / 2;
+      let best = cards[0], d = Infinity;
+      cards.forEach(el => { const m = Math.abs(el.offsetLeft + el.offsetWidth / 2 - c); if (m < d) { d = m; best = el; } });
+      if (best) film.scrollTo({ left: best.offsetLeft - (film.clientWidth - best.offsetWidth) / 2, behavior: 'smooth' });
+      setTimeout(() => { window.filmMoved = false; }, 60);
+    }
+  };
+  window.addEventListener('pointerup', end); window.addEventListener('pointercancel', end);
+  film.addEventListener('dragstart', (e) => e.preventDefault());
+  setTimeout(update, 300); window.addEventListener('load', update);
+  window.filmUpdate = update;
+})();
+
+/* /* ---------------- LINTERNAS ---------------- */
 function spawnLantern() {
   const layer = document.getElementById('lantern-layer');
   const l = document.createElement('div');

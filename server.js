@@ -147,6 +147,7 @@ app.use(express.json({ limit: '200kb' }));
 
 const PUB = path.join(__dirname, 'public');
 app.use('/uploads', express.static(UPLOAD_DIR, { maxAge: '7d', immutable: true, index: false, dotfiles: 'deny' }));
+app.use('/i/fotos', express.static(path.join(PUB, 'fotos'), { maxAge: '7d', index: false }));
 app.get('/i/:token', (req, res) => res.sendFile(path.join(PUB, 'index.html')));
 app.get('/muro/:code', (req, res) => res.sendFile(path.join(PUB, 'muro.html')));
 app.get('/panel', (req, res) => res.sendFile(path.join(PUB, 'panel.html')));
@@ -485,14 +486,23 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error del servidor' });
 });
 
-app.listen(PORT, () => {
+const srv = require('http').createServer(app);
+srv.listen(PORT, () => {
   console.log(`\n  XV Scarlette escuchando en http://localhost:${PORT}`);
   console.log(`  Panel:  http://localhost:${PORT}/panel`);
   console.log(`  Muro:   http://localhost:${PORT}/muro/${db.config.wallCode}`);
-  if (generatedPassword) {
-    console.log(`\n  Contraseña del panel (generada, guárdala): ${ADMIN_PASSWORD}`);
-    console.log('  Cámbiala definiendo la variable ADMIN_PASSWORD.\n');
-  } else if (!process.env.ADMIN_PASSWORD) {
-    console.log('  Contraseña del panel: la generada la primera vez (está en data/db.json → config.adminPassword)\n');
+  if (process.env.ADMIN_PASSWORD) {
+    console.log('\n  Contraseña del panel: la definida en ADMIN_PASSWORD\n');
+  } else {
+    console.log(`\n  Contraseña del panel (generada, se guarda en data/db.json): ${ADMIN_PASSWORD}`);
+    console.log('  Para usar otra, define la variable ADMIN_PASSWORD.\n');
   }
+});
+srv.on('error', (e) => {
+  if (e.code === 'EADDRINUSE') {
+    console.error(`\n  El puerto ${PORT} ya está en uso: hay otro servidor de esta invitación abierto.`);
+    console.error('  Cierra la otra ventana negra (o reinicia la computadora) y vuelve a intentarlo.\n');
+    process.exit(1);
+  }
+  throw e;
 });
