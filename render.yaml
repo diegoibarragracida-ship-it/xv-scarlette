@@ -1,20 +1,18 @@
-# Blueprint de Render: crea el servicio con su disco persistente.
+# Blueprint de Render (plan GRATUITO). Los datos y fotos se guardan en Supabase, no en Render.
 services:
   - type: web
     name: xv-scarlette
     runtime: node
-    plan: starter            # el disco persistente requiere un plan de pago
+    plan: free
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /panel
     envVars:
-      - key: ADMIN_PASSWORD  # tu contraseña del panel (Render te la pide al crear)
+      - key: ADMIN_PASSWORD  # tu contraseña del panel
         sync: false
       - key: WALL_CODE       # parte secreta del link del muro, ej. scarlette-xv-2026
         sync: false
-      - key: DATA_DIR
-        value: /var/data
-    disk:
-      name: xv-datos
-      mountPath: /var/data
-      sizeGB: 5
+      - key: SUPABASE_URL    # https://xxxx.supabase.co
+        sync: false
+      - key: SUPABASE_KEY    # llave service_role (secreta)
+        sync: false

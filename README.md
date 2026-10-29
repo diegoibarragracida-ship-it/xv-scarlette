@@ -21,7 +21,8 @@ ADMIN_PASSWORD=tu_clave npm start
 |---|---|
 | `ADMIN_PASSWORD` | Contraseña del panel (obligatoria en producción) |
 | `WALL_CODE` | Código fijo del link del muro (opcional) |
-| `DATA_DIR` | Carpeta de datos y fotos. En Render apúntala a un disco persistente, ej. `/var/data` |
+| `DATA_DIR` | Carpeta local de datos y fotos (solo si NO usas Supabase) |
+| `SUPABASE_URL`, `SUPABASE_KEY` | Si existen, datos y fotos se guardan en Supabase Storage (gratis) en vez del disco. Ver DEPLOY.md |
 | `PORT` | Lo pone la plataforma |
 
 ## Subir a GitHub
@@ -35,8 +36,8 @@ git push -u origin main
 ```
 
 ## Render
-Web Service · Build: `npm install` · Start: `npm start` · añade un Disk montado en `/var/data` y `DATA_DIR=/var/data`, `ADMIN_PASSWORD=...`.
-Sin disco persistente las fotos y la lista se pierden en cada deploy.
+Web Service (plan Free) · Build: `npm install` · Start: `npm start` · variables `ADMIN_PASSWORD`, `WALL_CODE`, `SUPABASE_URL`, `SUPABASE_KEY`.
+Sin Supabase (ni disco) las fotos y la lista se pierden en cada deploy. Pasos en DEPLOY.md.
 
 ## Pendiente de personalizar
 - Fotos reales de Scarlette en `public/index.html` (sección hero y galería).
