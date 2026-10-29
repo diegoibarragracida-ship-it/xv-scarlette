@@ -732,11 +732,15 @@ a.float-btn { text-decoration: none; }
       </div>
       <div class="timeline-item">
         <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
-        <div class="tcontent"><div class="ttime">7:30 – 8:30 pm</div><div class="tlabel" data-i18n="t3">Entrada y baile</div></div>
+        <div class="tcontent"><div class="ttime">7:30 – 8:30 pm</div><div class="tlabel" data-i18n="t3">Presentación y baile</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
+        <div class="tcontent"><div class="ttime">8:30 pm</div><div class="tlabel" data-i18n="t4">Cena</div></div>
       </div>
       <div class="timeline-item">
         <div class="dotcol"><div class="tdot"></div></div>
-        <div class="tcontent"><div class="ttime">8:30 pm</div><div class="tlabel" data-i18n="t4">Cena</div></div>
+        <div class="tcontent"><div class="ttime" data-i18n="t5_time">Al final</div><div class="tlabel" data-i18n="t5">Agradecimiento</div></div>
       </div>
     </div>
 
@@ -762,9 +766,9 @@ a.float-btn { text-decoration: none; }
       <p class="dress-sub" data-i18n="dress_sub">Estos colores están reservados para la quinceañera y su corte. Por favor evítalos en tu atuendo.</p>
       <div class="palette">
         <div class="sw-wrap"><div class="sw" style="background:#ECD677;"></div><span class="sw-name" data-i18n="c_gold">Dorado</span></div>
-        <div class="sw-wrap"><div class="sw" style="background:#FFFFFF;"></div><span class="sw-name" data-i18n="c_white">Blanco</span></div>
         <div class="sw-wrap"><div class="sw" style="background:#E1C4FB;"></div><span class="sw-name" data-i18n="c_lilac">Lila</span></div>
         <div class="sw-wrap"><div class="sw" style="background:#CC93D5;"></div><span class="sw-name" data-i18n="c_orchid">Orquídea</span></div>
+        <div class="sw-wrap"><div class="sw" style="background:#FADEE4;"></div><span class="sw-name" data-i18n="c_pink">Rosa pálido</span></div>
       </div>
       <p class="dress-note" data-i18n="dress_note">Gracias por ayudarme a que mi noche luzca como un cuento 💜</p>
     </div>
@@ -873,13 +877,13 @@ const translations = {
     fam_eyebrow: "Con la bendición de", fam_title: "Mi familia",
     parents_h: "Mis padres", godm_h: "Mis madrinas",
     itin_eyebrow: "Itinerario", itin_title: "El gran día",
-    t1: "Misa de acción de gracias", t2: "Recepción y bienvenida de invitados", t3: "Entrada y baile", t4: "Cena",
+    t1: "Misa de acción de gracias", t2: "Recepción y bienvenida de invitados", t3: "Presentación y baile", t4: "Cena", t5: "Agradecimiento", t5_time: "Al final",
     place1_tag: "Misa", place2_tag: "Recepción",
     mapbtn: "Cómo llegar", mapbtn2: "Cómo llegar",
     dress_title: "Código de vestimenta: Formal",
     dress_sub: "Estos colores están reservados para la quinceañera y su corte. Por favor evítalos en tu atuendo.",
     dress_note: "Gracias por ayudarme a que mi noche luzca como un cuento 💜",
-    c_gold: "Dorado", c_white: "Blanco", c_lilac: "Lila", c_orchid: "Orquídea",
+    c_gold: "Dorado", c_white: "Blanco", c_lilac: "Lila", c_orchid: "Orquídea", c_pink: "Rosa pálido",
     gift_title: "Mesa de regalos", gift_text: "Tu presencia es el regalo más importante de esta noche. Si deseas obsequiarme algo, puedes consultar mi mesa de regalos o depositar un sobre en el cofre de los deseos.",
     lv_label: "Mesa de regalos · No. de evento", lv_copy: "Copiar número", lv_copied: "¡Número copiado!",
     chest_hint: "Toca el cofre para abrirlo", chest_hint_open: "¡Lluvia de sobres! Toca otra vez ✨",
@@ -907,13 +911,13 @@ const translations = {
     fam_eyebrow: "With the blessing of", fam_title: "My family",
     parents_h: "My parents", godm_h: "My godmothers",
     itin_eyebrow: "Itinerary", itin_title: "The big day",
-    t1: "Thanksgiving Mass", t2: "Reception & guest welcome", t3: "Grand entrance & dance", t4: "Dinner",
+    t1: "Thanksgiving Mass", t2: "Reception & guest welcome", t3: "Presentation & dance", t4: "Dinner", t5: "Thank-you words", t5_time: "At the end",
     place1_tag: "Mass", place2_tag: "Reception",
     mapbtn: "Get directions", mapbtn2: "Get directions",
     dress_title: "Dress code: Formal",
     dress_sub: "These colors are reserved for the quinceañera and her court. Please avoid them in your outfit.",
     dress_note: "Thank you for helping my night look like a fairy tale 💜",
-    c_gold: "Gold", c_white: "White", c_lilac: "Lilac", c_orchid: "Orchid",
+    c_gold: "Gold", c_white: "White", c_lilac: "Lilac", c_orchid: "Orchid", c_pink: "Pale pink",
     gift_title: "Gift registry", gift_text: "Your presence is the most important gift of the night. If you'd like to give me something, you can check my gift registry or drop an envelope in the wishing chest.",
     lv_label: "Gift registry · Event No.", lv_copy: "Copy number", lv_copied: "Number copied!",
     chest_hint: "Tap the chest to open it", chest_hint_open: "A shower of envelopes! Tap again ✨",
@@ -1099,16 +1103,11 @@ async function loadGuest() {
    Para cambiar el orden, quitar o poner pies de foto, edita esta lista.
    Las fotos están en la carpeta public/fotos. */
 const FOTOS = [
-  { src: 'fotos/01-bebe-2012.jpg',  es: 'Enero 2012',        en: 'January 2012' },
-  { src: 'fotos/02-minnie.jpg',     es: 'Mi Minnie',        en: 'My Minnie' },
-  { src: 'fotos/03-sofia.jpg',      es: 'Mi cumpleaños',    en: 'My birthday' },
-  { src: 'fotos/04-elsa.jpg',       es: 'Princesa azul',    en: 'Blue princess' },
-  { src: 'fotos/05-unicornio.jpg',  es: 'Unicornios',        en: 'Unicorns' },
-  { src: 'fotos/06-peluche.jpg',    es: 'Mi unicornio',     en: 'My unicorn' },
-  { src: 'fotos/07-9anos.jpg',      es: '9 años',            en: '9 years old' },
-  { src: 'fotos/08-10anos.jpg',     es: '10 años',           en: '10 years old' },
-  { src: 'fotos/09-cumple.jpg',     es: 'Cumpleaños',       en: 'Birthday' },
-  { src: 'fotos/10-12anos.jpg',     es: '12 años',           en: '12 years old' },
+  { src: 'fotos/01-bebe.jpg',     es: 'Mi bebé',            en: 'My baby days' },
+  { src: 'fotos/02-sonrisa.jpg',  es: 'Mi primera sonrisa', en: 'My first smile' },
+  { src: 'fotos/03-colitas.jpg',  es: 'Mis colitas',        en: 'My pigtails' },
+  { src: 'fotos/04-sorpresa.jpg', es: '¡Sorpresa!',         en: 'Surprise!' },
+  { src: 'fotos/05-besito.jpg',   es: 'Mi besito',          en: 'My little kiss' },
 ];
 function renderFilm() {
   const film = document.getElementById('film');

@@ -643,17 +643,42 @@ function stopScan() {
   if (stream) stream.getTracks().forEach(t => t.stop());
   stream = null; $('scan-video').hidden = true;
 }
+function loadJsQR() {
+  return new Promise((res, rej) => {
+    if (window.jsQR) return res();
+    const sc = document.createElement('script'); sc.src = 'vendor/jsQR.js';
+    sc.onload = () => res(); sc.onerror = () => rej(); document.head.appendChild(sc);
+  });
+}
 $('scan-cam').onclick = async () => {
   if (stream) return stopScan();
-  if (!('BarcodeDetector' in window)) return toast('Tu navegador no escanea QR. Usa Chrome en Android o pega el link.');
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return toast('La cámara necesita abrirse con https. Pega el link del pase.');
   try {
-    const det = new BarcodeDetector({ formats: ['qr_code'] });
-    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-    const v = $('scan-video'); v.srcObject = stream; v.hidden = false; await v.play();
+    const native = 'BarcodeDetector' in window;
+    const det = native ? new BarcodeDetector({ formats: ['qr_code'] }) : null;
+    if (!native) await loadJsQR();
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
+    const v = $('scan-video'); v.setAttribute('playsinline', ''); v.muted = true; v.srcObject = stream; v.hidden = false; await v.play();
+    const cv = document.createElement('canvas'), cx = cv.getContext('2d', { willReadFrequently: true });
     scanTimer = setInterval(async () => {
-      try { const codes = await det.detect(v); if (codes.length) { const raw = codes[0].rawValue; stopScan(); lookup(raw); } } catch {}
-    }, 400);
-  } catch { toast('No se pudo abrir la cámara.'); stopScan(); }
+      try {
+        let raw = null;
+        if (det) { const codes = await det.detect(v); if (codes.length) raw = codes[0].rawValue; }
+        else if (v.videoWidth) {
+          const k = Math.min(1, 640 / v.videoWidth);
+          cv.width = Math.round(v.videoWidth * k); cv.height = Math.round(v.videoHeight * k);
+          cx.drawImage(v, 0, 0, cv.width, cv.height);
+          const img = cx.getImageData(0, 0, cv.width, cv.height);
+          const r = window.jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert' });
+          if (r) raw = r.data;
+        }
+        if (raw) { stopScan(); lookup(raw); }
+      } catch {}
+    }, 300);
+  } catch (e) {
+    stopScan();
+    toast(e && e.name === 'NotAllowedError' ? 'Permite el acceso a la cámara en Safari (Ajustes del sitio).' : 'No se pudo abrir la cámara.');
+  }
 };
 
 /* ======================== muro ======================== */
