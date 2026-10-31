@@ -448,6 +448,7 @@ a.float-btn { text-decoration: none; }
 .wall-card .big { font-size: 2.2rem; }
 .wall-card .wall-h { font-size: 1.15rem; color: var(--plum); margin-top: 4px; }
 .inv-pass-wrap .wall-card { margin-top: 0; }
+.wall-url { display: block; margin-top: 12px; font-size: 0.82rem; color: var(--plum); word-break: break-all; text-decoration: underline; }
 .wall-card p { font-size: 0.95rem; color: var(--ink); margin-top: 6px; }
 .btn-post {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 13px 24px; border-radius: 999px;
@@ -732,11 +733,15 @@ a.float-btn { text-decoration: none; }
       </div>
       <div class="timeline-item">
         <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
-        <div class="tcontent"><div class="ttime">7:30 – 8:30 pm</div><div class="tlabel" data-i18n="t3">Presentación y baile</div></div>
+        <div class="tcontent"><div class="ttime">7:30 – 8:30 pm</div><div class="tlabel" data-i18n="t3">Presentación y vals</div></div>
       </div>
       <div class="timeline-item">
         <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
         <div class="tcontent"><div class="ttime">8:30 pm</div><div class="tlabel" data-i18n="t4">Cena</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="dotcol"><div class="tdot"></div><div class="tline"></div></div>
+        <div class="tcontent"><div class="ttime">10:00 pm</div><div class="tlabel" data-i18n="t4b">Corte de pastel</div></div>
       </div>
       <div class="timeline-item">
         <div class="dotcol"><div class="tdot"></div></div>
@@ -820,6 +825,7 @@ a.float-btn { text-decoration: none; }
       <h3 class="wall-h" data-i18n="wall_title">Muro de recuerdos</h3>
       <p data-i18n="wall_text">Publica tus fotos y videos de la noche, o simplemente deja un mensaje para Scarlette. Comenta y dale like a los recuerdos de los demás.</p>
       <a class="btn-post gold" id="wall-link" href="#" data-i18n="wall_btn">Ir al muro de recuerdos</a>
+      <a class="wall-url" id="wall-url-text" href="#" hidden></a>
     </div>
     <div class="inv-pass" style="margin-top:20px;">
       <div class="pass-label" data-i18n="pass_label">Tu pase de entrada</div>
@@ -877,7 +883,7 @@ const translations = {
     fam_eyebrow: "Con la bendición de", fam_title: "Mi familia",
     parents_h: "Mis padres", godm_h: "Mis madrinas",
     itin_eyebrow: "Itinerario", itin_title: "El gran día",
-    t1: "Misa de acción de gracias", t2: "Recepción y bienvenida de invitados", t3: "Presentación y baile", t4: "Cena", t5: "Agradecimiento", t5_time: "Al final",
+    t1: "Misa de acción de gracias", t2: "Recepción y bienvenida de invitados", t3: "Presentación y vals", t4: "Cena", t4b: "Corte de pastel", t5: "Agradecimiento", t5_time: "Al final",
     place1_tag: "Misa", place2_tag: "Recepción",
     mapbtn: "Cómo llegar", mapbtn2: "Cómo llegar",
     dress_title: "Código de vestimenta: Formal",
@@ -911,7 +917,7 @@ const translations = {
     fam_eyebrow: "With the blessing of", fam_title: "My family",
     parents_h: "My parents", godm_h: "My godmothers",
     itin_eyebrow: "Itinerary", itin_title: "The big day",
-    t1: "Thanksgiving Mass", t2: "Reception & guest welcome", t3: "Presentation & dance", t4: "Dinner", t5: "Thank-you words", t5_time: "At the end",
+    t1: "Thanksgiving Mass", t2: "Reception & guest welcome", t3: "Presentation & waltz", t4: "Dinner", t4b: "Cake cutting", t5: "Thank-you words", t5_time: "At the end",
     place1_tag: "Mass", place2_tag: "Reception",
     mapbtn: "Get directions", mapbtn2: "Get directions",
     dress_title: "Dress code: Formal",
@@ -957,8 +963,8 @@ function refreshDynamic() {
   sel.style.display = guest.pases > 1 ? '' : 'none';
 
   document.getElementById('rsvp-sub').textContent = currentLang === 'es'
-    ? `Confirma tu asistencia — tu pase es válido para ${guest.pases === 1 ? '1 persona' : 'hasta ' + guest.pases + ' personas'}.`
-    : `Please confirm your attendance — your pass is valid for ${guest.pases === 1 ? '1 person' : 'up to ' + guest.pases + ' people'}.`;
+    ? `Confirma tu asistencia antes del 5 de diciembre — tu pase es válido para ${guest.pases === 1 ? '1 persona' : 'hasta ' + guest.pases + ' personas'}.`
+    : `Please confirm your attendance before December 5 — your pass is valid for ${guest.pases === 1 ? '1 person' : 'up to ' + guest.pases + ' people'}.`;
   document.getElementById('pass-name').textContent = guest.nombre || (currentLang === 'es' ? 'Invitado de ejemplo' : 'Sample guest');
   document.getElementById('pass-count-text').textContent = currentLang === 'es'
     ? `Válido para ${plural(guest.pases)}` : `Valid for ${plural(guest.pases)}`;
@@ -1094,6 +1100,9 @@ async function loadGuest() {
     document.getElementById('wall-fab').href = guest.wallUrl;
     document.getElementById('wall-fab').hidden = false;
     document.getElementById('wall-card').hidden = false;
+    const wt = document.getElementById('wall-url-text');
+    const full = new URL(guest.wallUrl, location.href).href.split('?')[0];
+    wt.textContent = full; wt.href = guest.wallUrl; wt.hidden = false;
   }
   refreshDynamic();
   drawQR();
